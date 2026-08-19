@@ -1,1 +1,0 @@
-//esse codigo vai carregar amais do bash

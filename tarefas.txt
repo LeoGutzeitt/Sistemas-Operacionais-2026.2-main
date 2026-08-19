@@ -1,0 +1,3 @@
+echo "Tarefa 1" 
+echo "Tarefa 2" 
+sleep 1 && echo "Tarefa 3"
