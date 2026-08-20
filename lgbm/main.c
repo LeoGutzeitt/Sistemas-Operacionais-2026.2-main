@@ -2,22 +2,33 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 #include "tarefas.h"
-#include "executador.h"
+#include "interativo.h"
 
-int main(int argc, char **argv) {
-    const char *jobs_file = (argc > 1) ? argv[1] : "tasks.txt";
 
-    if (tarefas_carregar_de_arquivo(jobs_file) != 0) {
-        fprintf(stderr, "Erro ao carregar tarefas de %s\n", jobs_file);
-        return 1;
+
+int main(int argc, char *argv[]) {
+
+
+    printf("Iniciando ProcessFlow...\n");
+  // Receber o imput para ir pro interativo ou workflow
+
+    if(argc==1){
+        printf("Modo interativo\n");
+        interativo(argc, argv);
+    }
+  else if(argc==2){
+      printf("Modo workflow\n");
+      //   Workflow(argc, argv);  
+      //
+    }
+    else{
+        printf("Número de argumentos inválido\n");
+        exit(1);
     }
 
-    // Inicia executador com 2 trabalhadores (ajuste conforme necessidade)
-    executador_iniciar(2);
-    executador_esperar();
-
-    tarefas_limpar();
-    return 0;
+ return 0;
 }
