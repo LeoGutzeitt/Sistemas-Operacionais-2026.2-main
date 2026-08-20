@@ -5,7 +5,6 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include "tarefas.h"
 #include "interativo.h"
 
 
@@ -13,8 +12,8 @@
 int main(int argc, char *argv[]) {
 
 
-    printf("Iniciando ProcessFlow...\n");
-  // Receber o imput para ir pro interativo ou workflow
+ printf("Iniciando ProcessFlow...\n");
+// Receber o imput para ir pro interativo ou workflow
 
     if(argc==1){
         printf("Modo interativo\n");
