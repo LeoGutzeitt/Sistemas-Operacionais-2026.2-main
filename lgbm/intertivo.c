@@ -1,15 +1,17 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
-#include <sys/wait.h>
+
+#include "comando.h"
 
 int interativo(int argc, char *argv[]) {
     (void)argc;
     (void)argv;
 
     char linha[256];
-    char *args[20];
+    char *args[TASK_MAX_ARGS + 2];
+    Catalogo catalogo;
+
+    catalogo_inicializar(&catalogo);
 
 
     while (1) {
@@ -22,11 +24,11 @@ int interativo(int argc, char *argv[]) {
         linha[strcspn(linha, "\n")] = '\0';
 
         int i = 0;
-        char *token = strtok(linha, " ");
+        char *token = strtok(linha, " \t");
 
-        while (token != NULL && i < 19) {
+        while (token != NULL && i < TASK_MAX_ARGS + 1) {
             args[i++] = token;
-            token = strtok(NULL, " ");
+            token = strtok(NULL, " \t");
         }
 
         args[i] = NULL;
@@ -35,23 +37,10 @@ int interativo(int argc, char *argv[]) {
             continue;
         }
 
-        pid_t pid = fork();
-
-        if (pid < 0) {
-            perror("fork");
-            exit(1);
-        }
-
-        if (pid == 0) {
-            execvp(args[0], args);
-
-            perror("execvp");
-            exit(1);
-        } else {
-            wait(NULL);
-        }
+        comando_executar(&catalogo, i, args);
     }
 
+    catalogo_liberar(&catalogo);
     printf("Saindo do ProcessFlow\n");
     return 0;
 }

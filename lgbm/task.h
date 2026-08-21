@@ -12,5 +12,6 @@ typedef struct task {
 
 int task_cadastrar(Task *task, const char *nome, int argc, char *argv[]);
 Task *task_buscar(Task *task, const char *nome);
+void task_liberar(Task *task);
 
 #endif // LGBM_TASK_H

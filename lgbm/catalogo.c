@@ -55,3 +55,16 @@ Task *catalogo_buscar(Catalogo *catalogo, const char *nome)
 
     return NULL;
 }
+
+void catalogo_liberar(Catalogo *catalogo)
+{
+    if (catalogo == NULL) {
+        return;
+    }
+
+    for (int i = 0; i < catalogo->quantidade; i++) {
+        task_liberar(&catalogo->tarefas[i]);
+    }
+
+    catalogo->quantidade = 0;
+}

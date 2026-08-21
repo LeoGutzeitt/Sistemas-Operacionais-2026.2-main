@@ -13,5 +13,6 @@ typedef struct {
 void catalogo_inicializar(Catalogo *catalogo);
 int catalogo_cadastrar(Catalogo *catalogo, const char *nome, int argc, char *argv[]);
 Task *catalogo_buscar(Catalogo *catalogo, const char *nome);
+void catalogo_liberar(Catalogo *catalogo);
 
 #endif
