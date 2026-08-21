@@ -1,0 +1,3 @@
+task listar /bin/echo antes
+exit
+task depois /bin/echo nao_deve_aparecer

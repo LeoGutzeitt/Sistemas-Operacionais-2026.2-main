@@ -37,7 +37,9 @@ int interativo(int argc, char *argv[]) {
             continue;
         }
 
-        comando_executar(&catalogo, i, args);
+        if (comando_executar(&catalogo, i, args) == COMANDO_SAIR) {
+            break;
+        }
     }
 
     catalogo_liberar(&catalogo);

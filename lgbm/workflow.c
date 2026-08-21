@@ -42,7 +42,9 @@ int workflow_executar(const char *caminho, Catalogo *catalogo){
         argumentos[quantidade] = NULL;
 
         if (quantidade > 0) {
-            comando_executar(catalogo, quantidade, argumentos);
+            if (comando_executar(catalogo, quantidade, argumentos) == COMANDO_SAIR) {
+                break;
+            }
         }
     }
         fclose(arquivo);
