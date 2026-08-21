@@ -8,6 +8,7 @@ SRCS := \
     $(SRC_DIR)/task.c \
     $(SRC_DIR)/catalogo.c \
     $(SRC_DIR)/executor.c \
+    $(SRC_DIR)/workflow.c \
     $(SRC_DIR)/comando.c
 
 CFLAGS := -Wall -Wextra -g -O0 -std=c11 \
@@ -19,7 +20,7 @@ CFLAGS := -Wall -Wextra -g -O0 -std=c11 \
 all: $(TARGET)
 
 $(TARGET): $(SRCS)
-    $(CC) $(CFLAGS) $(SRCS) -o $@
+	$(CC) $(CFLAGS) $(SRCS) -o $@
 
 run: $(TARGET)
 	./$(TARGET) $(WORKFLOW)
