@@ -5,6 +5,9 @@
 #include <sys/wait.h>
 
 int interativo(int argc, char *argv[]) {
+    (void)argc;
+    (void)argv;
+
     char linha[256];
     char *args[20];
 
