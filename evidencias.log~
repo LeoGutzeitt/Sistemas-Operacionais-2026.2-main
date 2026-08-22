@@ -1,1 +1,43 @@
 o
+
+ *  Executing task: make 
+
+gcc -Wall -Wextra -g -O0 -std=c11 -D_POSIX_C_SOURCE=200809L -Ilgbm lgbm/main.c lgbm/intertivo.c lgbm/task.c lgbm/catalogo.c lgbm/executor.c lgbm/workflow.c lgbm/comando.c -o processflow
+lgbm/executor.c: In function ‘executor_set_workdir’:
+lgbm/executor.c:26:24: warning: implicit declaration of function ‘strdup’ [-Wimplicit-function-declaration]
+   26 |     executor_workdir = strdup(diretorio);
+      |                        ^~~~~~
+lgbm/executor.c:26:22: warning: assignment to ‘char *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+   26 |     executor_workdir = strdup(diretorio);
+      |                      ^
+lgbm/executor.c: In function ‘executor_aplicar_redirecionamentos’:
+lgbm/executor.c:41:94: warning: implicit declaration of function ‘strerror’; did you mean ‘perror’?[-Wimplicit-function-declaration]
+   41 | printf(stderr, "Erro ao abrir arquivo de entrada '%s': %s\n", task->input_path, strerror(errno));
+      |                                                                                 ^~~~~~~~
+      |                                                                                 perror
+lgbm/executor.c:41:70: warning: format ‘%s’ expects argument of type ‘char *’, but argument 4 has type ‘int’ [-Wformat=]
+   41 |             fprintf(stderr, "Erro ao abrir arquivo de entrada '%s': %s\n", task->input_path, strerror(errno));
+      |                                                                     ~^ ~~~~~~~~~~~~~~~
+      |                                                                      | |
+      |                                                                      char * int
+      |                                                                     %d
+lgbm/executor.c:62:68: warning: format ‘%s’ expects argument of type ‘char *’, but argument 4 has type ‘int’ [-Wformat=]
+   62 |             fprintf(stderr, "Erro ao abrir arquivo de saida '%s': %s\n", task->output_path,strerror(errno));
+      |                                                                   ~^~~~~~~~~~~~~~~~
+      |                                                                    ||
+      |                                                                    char *int
+      |                                                                   %d
+lgbm/executor.c: In function ‘executor_run_task’:
+lgbm/executor.c:124:36: warning: the comparison will always evaluate as ‘false’ for the address of ‘argv’ will never be NULL [-Waddress]
+  124 |     if (task == NULL || task->argv == NULL || task->argv[0] == NULL) {
+      |                                    ^~
+In file included from lgbm/executor.h:4,
+                 from lgbm/executor.c:1:
+lgbm/task.h:10:11: note: ‘argv’ declared here
+   10 |     char *argv[TASK_MAX_ARGS + 1];
+      |           ^~~~
+lgbm/comando.c: In function ‘comando_executar’:
+lgbm/comando.c:124:9: warning: implicit declaration of function ‘executor_set_workdir’ [-Wimplicit-function-declaration]
+  124 |         executor_set_workdir(argv[1]);
+      |         ^~~~~~~~~~~~~~~~~~~~
+ *  Terminal will be reused by tasks, press any key to close it. 

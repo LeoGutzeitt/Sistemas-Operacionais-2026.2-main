@@ -19,6 +19,8 @@ int task_cadastrar(Task *task, const char *nome, int argc, char *argv[])
         }
     }
 
+    memset(task, 0, sizeof(*task));
+
     strncpy(task->nome, nome, TASK_NAME_SIZE - 1);
     task->nome[TASK_NAME_SIZE - 1] = '\0';
 
@@ -61,6 +63,11 @@ void task_liberar(Task *task)
         task->argv[i] = NULL;
     }
 
+    free(task->input_path);
+    free(task->output_path);
+    task->input_path = NULL;
+    task->output_path = NULL;
+    task->output_append = 0;
     task->argc = 0;
     task->nome[0] = '\0';
 }

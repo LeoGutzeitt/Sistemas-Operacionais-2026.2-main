@@ -8,6 +8,9 @@ typedef struct task {
     char nome[TASK_NAME_SIZE];
     int argc;
     char *argv[TASK_MAX_ARGS + 1];
+    char *input_path;
+    char *output_path;
+    int output_append;
 } Task;
 
 int task_cadastrar(Task *task, const char *nome, int argc, char *argv[]);
