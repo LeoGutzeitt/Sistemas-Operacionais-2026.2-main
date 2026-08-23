@@ -1,3 +1,7 @@
+#define _POSIX_C_SOURCE 200809L
+
+#define _POSIX_C_SOURCE 200809L
+
 #include "comando.h"
 
 #include <stdio.h>
@@ -119,6 +123,52 @@ int comando_executar(Catalogo *catalogo, int argc, char *argv[])
 
         executor_set_workdir(argv[1]);
         return 0;
+    }
+
+    if (strcmp(argv[0], "start") == 0) {
+        if (argc != 2) {
+            fprintf(stderr, "Uso: start <tarefa>\n");
+            return -1;
+        }
+
+        Task *task = catalogo_buscar(catalogo, argv[1]);
+        if (task == NULL) {
+            fprintf(stderr, "Tarefa '%s' nao encontrada.\n", argv[1]);
+            return -1;
+        }
+
+        int job_id = executor_start_task(task);
+        if (job_id < 0) {
+            fprintf(stderr, "Erro ao iniciar tarefa '%s' em background.\n", argv[1]);
+            return -1;
+        }
+
+        return 0;
+    }
+
+    if (strcmp(argv[0], "jobs") == 0) {
+        if (argc != 1) {
+            fprintf(stderr, "Uso: jobs\n");
+            return -1;
+        }
+
+        return executor_jobs_list();
+    }
+
+    if (strcmp(argv[0], "wait") == 0) {
+        if (argc != 2) {
+            fprintf(stderr, "Uso: wait <jobId>\n");
+            return -1;
+        }
+
+        char *fim = NULL;
+        long id = strtol(argv[1], &fim, 10);
+        if (fim == argv[1] || *fim != '\0') {
+            fprintf(stderr, "JobId invalido: %s\n", argv[1]);
+            return -1;
+        }
+
+        return executor_wait_job((int)id);
     }
 
     if (strcmp(argv[0], "run") == 0) {

@@ -11,7 +11,44 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
+typedef struct {
+    int id;
+    pid_t pid;
+    char nome[TASK_NAME_SIZE];
+    int ativo;
+} ExecutorJob;
+
 static char *executor_workdir = NULL;
+static ExecutorJob executor_jobs[EXECUTOR_MAX_JOBS];
+static int executor_next_job_id = 1;
+
+static int executor_encontrar_job_por_id(int job_id)
+{
+    for (int i = 0; i < EXECUTOR_MAX_JOBS; i++) {
+        if (executor_jobs[i].ativo && executor_jobs[i].id == job_id) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+static void executor_limpar_jobs_terminados(void)
+{
+    for (int i = 0; i < EXECUTOR_MAX_JOBS; i++) {
+        if (!executor_jobs[i].ativo) {
+            continue;
+        }
+
+        int status = 0;
+        pid_t resultado = waitpid(executor_jobs[i].pid, &status, WNOHANG);
+        if (resultado == executor_jobs[i].pid) {
+            executor_jobs[i].ativo = 0;
+        } else if (resultado < 0 && errno != ECHILD) {
+            perror("waitpid");
+        }
+    }
+}
 
 void executor_set_workdir(const char *diretorio)
 {
@@ -109,6 +146,104 @@ static int executor_run_exec(char *const argv[], const Task *task)
         perror("waitpid");
         return -1;
     }
+
+    if (WIFEXITED(status)) {
+        return WEXITSTATUS(status);
+    }
+
+    return -1;
+}
+
+int executor_start_task(Task *task)
+{
+    if (task == NULL || task->argv[0] == NULL) {
+        return -1;
+    }
+
+    executor_limpar_jobs_terminados();
+
+    int slot = -1;
+    for (int i = 0; i < EXECUTOR_MAX_JOBS; i++) {
+        if (!executor_jobs[i].ativo) {
+            slot = i;
+            break;
+        }
+    }
+
+    if (slot < 0) {
+        fprintf(stderr, "Numero maximo de jobs atingido.\n");
+        return -1;
+    }
+
+    pid_t pid = fork();
+    if (pid < 0) {
+        perror("fork");
+        return -1;
+    }
+
+    if (pid == 0) {
+        if (executor_aplicar_redirecionamentos(task) != 0) {
+            _exit(127);
+        }
+
+        if (executor_workdir != NULL && chdir(executor_workdir) != 0) {
+            fprintf(stderr, "Nao foi possivel mudar para o diretorio '%s'.\n", executor_workdir);
+            _exit(127);
+        }
+
+        execvp(task->argv[0], task->argv);
+        perror("execvp");
+        _exit(127);
+    }
+
+    executor_jobs[slot].id = executor_next_job_id++;
+    executor_jobs[slot].pid = pid;
+    executor_jobs[slot].ativo = 1;
+    snprintf(executor_jobs[slot].nome, sizeof(executor_jobs[slot].nome), "%s", task->nome);
+
+    printf("[%d] %d\n", executor_jobs[slot].id, (int)pid);
+    return executor_jobs[slot].id;
+}
+
+int executor_jobs_list(void)
+{
+    executor_limpar_jobs_terminados();
+
+    int encontrou = 0;
+
+    for (int i = 0; i < EXECUTOR_MAX_JOBS; i++) {
+        if (executor_jobs[i].ativo) {
+            printf("[%d] %d %s\n", executor_jobs[i].id, (int)executor_jobs[i].pid, executor_jobs[i].nome);
+            encontrou = 1;
+        }
+    }
+
+    if (!encontrou) {
+        printf("Nenhum job em execucao.\n");
+    }
+
+    return 0;
+}
+
+int executor_wait_job(int job_id)
+{
+    int indice = executor_encontrar_job_por_id(job_id);
+    if (indice < 0) {
+        fprintf(stderr, "Job %d nao encontrado.\n", job_id);
+        return -1;
+    }
+
+    int status = 0;
+    if (waitpid(executor_jobs[indice].pid, &status, 0) < 0) {
+        perror("waitpid");
+        executor_jobs[indice].ativo = 0;
+        return -1;
+    }
+
+    executor_jobs[indice].ativo = 0;
+    executor_jobs[indice].id = -1;
+    executor_jobs[indice].pid = -1;
+    executor_jobs[indice].nome[0] = '\0';
 
     if (WIFEXITED(status)) {
         return WEXITSTATUS(status);
