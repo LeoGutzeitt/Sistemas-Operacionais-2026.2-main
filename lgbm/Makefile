@@ -1,6 +1,7 @@
 CC := gcc
 TARGET := processflow
-SRC_DIR := lgbm
+SRC_DIR := ponto\ c
+INC_DIR := ponto\ h
 
 SRCS := \
     $(SRC_DIR)/main.c \
@@ -13,7 +14,7 @@ SRCS := \
 
 CFLAGS := -Wall -Wextra -g -O0 -std=c11 \
     -D_POSIX_C_SOURCE=200809L \
-    -I$(SRC_DIR)
+    -I$(INC_DIR)
 
 .PHONY: all clean run
 
