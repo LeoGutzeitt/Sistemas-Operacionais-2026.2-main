@@ -1,0 +1,19 @@
+# Resumo de apresentação local
+resumo.md
+
+# Arquivos de compilação e execução
+*.o
+*.out
+*.exe
+*.pgm
+*.log
+processflow
+mandelbrot
+
+times.txt
+evidencias.log
+
+# Diretórios temporários
+*.swp
+*.swo
+.DS_Store

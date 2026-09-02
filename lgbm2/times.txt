@@ -1,6 +1,6 @@
 tempo
 largura=10 altura=8 max_iteracoes=40 num_threads=4
-serial: 0.000006 segundos
-openmp: 0.005526 segundos
-pthreads1: 0.003911 segundos
-pthreads2: 0.001096 segundos
+serial: 0.000005 segundos
+openmp: 0.002456 segundos
+pthreads1: 0.002010 segundos
+pthreads2: 0.002769 segundos
