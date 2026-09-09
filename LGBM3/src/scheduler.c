@@ -7,31 +7,31 @@
 
 typedef struct {
     FILE *output;
-    Task *tasks;
-    int num_tasks;
-    TaskStats *stats;
+    Task *tasks;         /* Lista de tarefas */
+    int num_tasks;       /* Número de tarefas */
+    TaskStats *stats;    /* Estatísticas */
 } Context;
 
 void write_execution(Context *ctx, const char *task_name, int duration, char status) {
-    fprintf(ctx->output, "[%s] for %d units - %c\n", task_name, duration, status);
+    fprintf(ctx->output, "[%s] durante %d unidades - %c\n", task_name, duration, status);
 }
 
 void write_idle(Context *ctx, int duration) {
-    fprintf(ctx->output, "idle for %d units\n", duration);
+    fprintf(ctx->output, "ocioso durante %d unidades\n", duration);
 }
 
 void write_stats(Context *ctx) {
-    fprintf(ctx->output, "LOST DEADLINES\n");
+    fprintf(ctx->output, "PRAZOS PERDIDOS\n");
     for (int i = 0; i < ctx->num_tasks; i++) {
         fprintf(ctx->output, "[%s] %d\n", ctx->tasks[i].def->name, ctx->stats[i].lost_deadlines);
     }
     
-    fprintf(ctx->output, "COMPLETE EXECUTION\n");
+    fprintf(ctx->output, "EXECUÇÃO COMPLETA\n");
     for (int i = 0; i < ctx->num_tasks; i++) {
         fprintf(ctx->output, "[%s] %d\n", ctx->tasks[i].def->name, ctx->stats[i].complete);
     }
     
-    fprintf(ctx->output, "KILLED\n");
+    fprintf(ctx->output, "ELIMINADAS\n");
     for (int i = 0; i < ctx->num_tasks; i++) {
         fprintf(ctx->output, "[%s] %d\n", ctx->tasks[i].def->name, ctx->stats[i].killed);
     }
@@ -44,7 +44,7 @@ int find_highest_priority_task_rate(Context *ctx, int current_time) {
     for (int i = 0; i < ctx->num_tasks; i++) {
         if (!is_ready(&ctx->tasks[i], current_time)) continue;
         
-        /* Rate-monotonic: smaller period = higher priority */
+        /* Rate-monótonica: período menor = prioridade maior */
         if (ctx->tasks[i].def->period < best_priority ||
             (ctx->tasks[i].def->period == best_priority && best >= 0 && i < best)) {
             best = i;
@@ -62,7 +62,7 @@ int find_highest_priority_task_edf(Context *ctx, int current_time) {
     for (int i = 0; i < ctx->num_tasks; i++) {
         if (!is_ready(&ctx->tasks[i], current_time)) continue;
         
-        /* EDF: earlier deadline = higher priority */
+        /* EDF: prazo anterior = prioridade maior */
         if (ctx->tasks[i].absolute_deadline < best_deadline ||
             (ctx->tasks[i].absolute_deadline == best_deadline && best >= 0 && i < best)) {
             best = i;
@@ -77,11 +77,11 @@ void run_scheduler(Schedule *schedule, const char *output_file,
                    int (*priority_func)(Context *, int), const char *algo_name) {
     FILE *output = fopen(output_file, "w");
     if (!output) {
-        print_error("Cannot create output file");
+        print_error("Não foi possível criar arquivo de saída");
         return;
     }
     
-    fprintf(output, "EXECUTION BY %s\n", algo_name);
+    fprintf(output, "EXECUÇÃO COM %s\n", algo_name);
     
     Task *tasks = initialize_tasks(schedule->tasks, schedule->num_tasks);
     TaskStats *stats = (TaskStats *)calloc(schedule->num_tasks, sizeof(TaskStats));
@@ -90,14 +90,14 @@ void run_scheduler(Schedule *schedule, const char *output_file,
     
     int current_time = 0;
     while (current_time < schedule->total_time) {
-        /* Check for new arrivals */
+        /* Verificar novas chegadas */
         for (int i = 0; i < schedule->num_tasks; i++) {
             if (current_time > 0 && current_time == tasks[i].next_arrival && tasks[i].complete) {
                 reset_task_instance(&tasks[i], current_time);
             }
         }
         
-        /* Check for missed deadlines */
+        /* Verificar prazos perdidos */
         for (int i = 0; i < schedule->num_tasks; i++) {
             if (is_past_deadline(&tasks[i], current_time)) {
                 stats[i].lost_deadlines++;
@@ -106,15 +106,15 @@ void run_scheduler(Schedule *schedule, const char *output_file,
             }
         }
         
-        /* Find task to execute */
+        /* Encontrar tarefa a executar */
         int task_idx = priority_func(&ctx, current_time);
         
         if (task_idx == -1) {
-            /* Idle */
+            /* Ocioso */
             write_idle(&ctx, 1);
             current_time++;
         } else {
-            /* Execute for 1 unit or until preemption/completion */
+            /* Executar durante 1 unidade ou até preemptor/conclusão */
             Task *current_task = &tasks[task_idx];
             current_task->remaining_burst--;
             
@@ -130,7 +130,7 @@ void run_scheduler(Schedule *schedule, const char *output_file,
         }
     }
     
-    /* Count killed tasks */
+    /* Contar tarefas eliminadas */
     for (int i = 0; i < schedule->num_tasks; i++) {
         if (!tasks[i].complete) {
             stats[i].killed++;

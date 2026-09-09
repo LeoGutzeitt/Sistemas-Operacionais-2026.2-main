@@ -2,7 +2,7 @@
 #include <string.h>
 #include "task.h"
 
-/* Task management functions */
+/* Funções de gerenciamento de tarefas */
 
 Task* initialize_tasks(TaskDef *task_defs, int num_tasks) {
     Task *tasks = (Task *)malloc(num_tasks * sizeof(Task));
@@ -15,7 +15,7 @@ Task* initialize_tasks(TaskDef *task_defs, int num_tasks) {
         tasks[i].next_arrival = task_defs[i].period;
         tasks[i].instance = 0;
         tasks[i].complete = 0;
-        tasks[i].arrived = 1;  /* All arrive at time 0 */
+        tasks[i].arrived = 1;  /* Todas chegam no tempo 0 */
     }
     
     return tasks;
@@ -30,7 +30,7 @@ void reset_task_instance(Task *task, int current_time) {
     task->arrived = 1;
 }
 
-int has_arrived(Task *task, int current_time) {
+int has_arrived(Task *task) {
     return task->arrived;
 }
 

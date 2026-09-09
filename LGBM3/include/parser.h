@@ -4,9 +4,9 @@
 #include "task.h"
 
 typedef struct {
-    int total_time;
-    TaskDef *tasks;
-    int num_tasks;
+    int total_time;    /* Tempo total de simulação */
+    TaskDef *tasks;    /* Lista de definições de tarefas */
+    int num_tasks;     /* Número de tarefas */
 } Schedule;
 
 Schedule* parse_input(const char *filename);

@@ -6,8 +6,8 @@
 #include "scheduler.h"
 
 char* extract_login() {
-    /* Placeholder: replace with actual login extraction logic */
-    /* For this implementation, we assume login is provided or use "mla" as default */
+    /* Placeholder: substitua pela lógica real de extração de login */
+    /* Para esta implementação, assumimos login fornecido ou usamos "mla" como padrão */
     return "mla";
 }
 
@@ -15,7 +15,7 @@ char* build_output_filename(const char *algorithm) {
     char *login = extract_login();
     char *output = (char *)malloc(256);
     if (!output) {
-        fprintf(stderr, "Error: Memory allocation failed\n");
+        fprintf(stderr, "Erro: Falha na alocação de memória\n");
         return NULL;
     }
     
@@ -25,41 +25,41 @@ char* build_output_filename(const char *algorithm) {
 
 int main(int argc, char *argv[]) {
     if (argc != 3) {
-        fprintf(stderr, "Usage: %s <algorithm> <input_file>\n", argv[0]);
-        fprintf(stderr, "  algorithm: rate or edf\n");
+        fprintf(stderr, "Uso: %s <algoritmo> <arquivo_entrada>\n", argv[0]);
+        fprintf(stderr, "  algoritmo: rate ou edf\n");
         return 1;
     }
     
     const char *algorithm = argv[1];
     const char *input_file = argv[2];
     
-    /* Validate algorithm */
+    /* Validar algoritmo */
     if (strcmp(algorithm, "rate") != 0 && strcmp(algorithm, "edf") != 0) {
-        fprintf(stderr, "Error: Algorithm must be 'rate' or 'edf'\n");
+        fprintf(stderr, "Erro: Algoritmo deve ser 'rate' ou 'edf'\n");
         return 1;
     }
     
-    /* Parse input */
+    /* Fazer parsing da entrada */
     Schedule *schedule = parse_input(input_file);
     if (!schedule) {
         return 1;
     }
     
-    /* Build output filename */
+    /* Construir nome do arquivo de saída */
     char *output_file = build_output_filename(algorithm);
     if (!output_file) {
         free_schedule(schedule);
         return 1;
     }
     
-    /* Run scheduler */
+    /* Executar escalonador */
     if (strcmp(algorithm, "rate") == 0) {
         execute_rate_monotonic(schedule, output_file);
     } else {
         execute_edf(schedule, output_file);
     }
     
-    /* Cleanup */
+    /* Limpeza */
     free(output_file);
     free_schedule(schedule);
     
