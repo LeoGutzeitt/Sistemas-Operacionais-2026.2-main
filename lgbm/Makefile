@@ -1,19 +1,24 @@
 CC = gcc
-CFLAGS = -std=c11 -Wall -Wextra -Wpedantic -O2 -fopenmp
-CPPFLAGS = -I.
-LDLIBS = -lm
-TARGET = mandelbrot
-OBJECTS = threads.o
+CFLAGS = -Wall -Wextra -g -std=c99
+SRCDIR = src
+INCDIR = include
+BINDIR = .
 
-.PHONY: all clean
+SOURCES = $(SRCDIR)/main.c $(SRCDIR)/parser.c $(SRCDIR)/scheduler.c $(SRCDIR)/task.c
+HEADERS = $(INCDIR)/parser.h $(INCDIR)/scheduler.h $(INCDIR)/task.h
+OBJECTS = $(SOURCES:.c=.o)
+TARGET = $(BINDIR)/scheduler
 
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) $(LDLIBS) -o $@
+	$(CC) $(CFLAGS) -I$(INCDIR) -o $@ $^
 
-threads.o: threads.c threads.h
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c threads.c -o threads.o
+$(SRCDIR)/%.o: $(SRCDIR)/%.c $(HEADERS)
+	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
 
 clean:
-	rm -f $(TARGET) $(OBJECTS) *.pgm times.txt evidencias.log
+	rm -f $(OBJECTS) $(TARGET)
+	rm -f *_*.out
+
+.PHONY: all clean
