@@ -1,0 +1,145 @@
+Validacao da Implementacao 4 - lgbm
+Data: 2026-11-04 20:53:35 -03:00
+Ambiente: Windows / MinGW GCC 6.3.0 / pthread
+Runner: sync_car-runner.c (preservado)
+Compilacao: mingw32-make
+Resultado compilacao: exit 0
+Aviso: unused parameter foo em alarm_handler do runner.
+Nota: alarm() desativado pelo runner no Windows; timeout externo de 15 segundos por execucao.
+Nota: passar estes testes nao garante conformidade completa com o enunciado.
+
+=== Execucao 1/10 ===
+car entering station with 33 free seats
+car departed station with 33 new passenger(s) (expected 33)
+car entering station with 6 free seats
+car departed station with 6 new passenger(s) (expected 6)
+car entering station with 28 free seats
+car departed station with 28 new passenger(s) (expected 28)
+car entering station with 47 free seats
+car departed station with 33 new passenger(s) (expected 33)
+Looks good!
+
+RESULTADO: APROVADO (exit 0, Looks good!, capacidades conferidas).
+=== Execucao 2/10 ===
+car entering station with 7 free seats
+car departed station with 7 new passenger(s) (expected 7)
+car entering station with 10 free seats
+car departed station with 10 new passenger(s) (expected 10)
+car entering station with 26 free seats
+car departed station with 26 new passenger(s) (expected 26)
+car entering station with 42 free seats
+car departed station with 42 new passenger(s) (expected 42)
+car entering station with 48 free seats
+car departed station with 15 new passenger(s) (expected 15)
+Looks good!
+
+RESULTADO: APROVADO (exit 0, Looks good!, capacidades conferidas).
+=== Execucao 3/10 ===
+car entering station with 35 free seats
+car departed station with 35 new passenger(s) (expected 35)
+car entering station with 36 free seats
+car departed station with 36 new passenger(s) (expected 36)
+car entering station with 1 free seats
+car departed station with 1 new passenger(s) (expected 1)
+car entering station with 1 free seats
+car departed station with 1 new passenger(s) (expected 1)
+car entering station with 12 free seats
+car departed station with 12 new passenger(s) (expected 12)
+car entering station with 13 free seats
+car departed station with 13 new passenger(s) (expected 13)
+car entering station with 19 free seats
+car departed station with 2 new passenger(s) (expected 2)
+Looks good!
+
+RESULTADO: APROVADO (exit 0, Looks good!, capacidades conferidas).
+=== Execucao 4/10 ===
+car entering station with 41 free seats
+car departed station with 41 new passenger(s) (expected 41)
+car entering station with 30 free seats
+car departed station with 30 new passenger(s) (expected 30)
+car entering station with 23 free seats
+car departed station with 23 new passenger(s) (expected 23)
+car entering station with 9 free seats
+car departed station with 6 new passenger(s) (expected 6)
+Looks good!
+
+RESULTADO: APROVADO (exit 0, Looks good!, capacidades conferidas).
+=== Execucao 5/10 ===
+car entering station with 24 free seats
+car departed station with 24 new passenger(s) (expected 24)
+car entering station with 12 free seats
+car departed station with 12 new passenger(s) (expected 12)
+car entering station with 17 free seats
+car departed station with 17 new passenger(s) (expected 17)
+car entering station with 39 free seats
+car departed station with 39 new passenger(s) (expected 39)
+car entering station with 18 free seats
+car departed station with 8 new passenger(s) (expected 8)
+Looks good!
+
+RESULTADO: APROVADO (exit 0, Looks good!, capacidades conferidas).
+=== Execucao 6/10 ===
+car entering station with 39 free seats
+car departed station with 39 new passenger(s) (expected 39)
+car entering station with 38 free seats
+car departed station with 38 new passenger(s) (expected 38)
+car entering station with 48 free seats
+car departed station with 23 new passenger(s) (expected 23)
+Looks good!
+
+RESULTADO: APROVADO (exit 0, Looks good!, capacidades conferidas).
+=== Execucao 7/10 ===
+car entering station with 17 free seats
+car departed station with 17 new passenger(s) (expected 17)
+car entering station with 35 free seats
+car departed station with 35 new passenger(s) (expected 35)
+car entering station with 17 free seats
+car departed station with 17 new passenger(s) (expected 17)
+car entering station with 12 free seats
+car departed station with 12 new passenger(s) (expected 12)
+car entering station with 43 free seats
+car departed station with 19 new passenger(s) (expected 19)
+Looks good!
+
+RESULTADO: APROVADO (exit 0, Looks good!, capacidades conferidas).
+=== Execucao 8/10 ===
+car entering station with 49 free seats
+car departed station with 49 new passenger(s) (expected 49)
+car entering station with 34 free seats
+car departed station with 34 new passenger(s) (expected 34)
+car entering station with 8 free seats
+car departed station with 8 new passenger(s) (expected 8)
+car entering station with 48 free seats
+car departed station with 9 new passenger(s) (expected 9)
+Looks good!
+
+RESULTADO: APROVADO (exit 0, Looks good!, capacidades conferidas).
+=== Execucao 9/10 ===
+car entering station with 29 free seats
+car departed station with 29 new passenger(s) (expected 29)
+car entering station with 31 free seats
+car departed station with 31 new passenger(s) (expected 31)
+car entering station with 2 free seats
+car departed station with 2 new passenger(s) (expected 2)
+car entering station with 34 free seats
+car departed station with 34 new passenger(s) (expected 34)
+car entering station with 25 free seats
+car departed station with 4 new passenger(s) (expected 4)
+Looks good!
+
+RESULTADO: APROVADO (exit 0, Looks good!, capacidades conferidas).
+=== Execucao 10/10 ===
+car entering station with 12 free seats
+car departed station with 12 new passenger(s) (expected 12)
+car entering station with 33 free seats
+car departed station with 33 new passenger(s) (expected 33)
+car entering station with 13 free seats
+car departed station with 13 new passenger(s) (expected 13)
+car entering station with 28 free seats
+car departed station with 28 new passenger(s) (expected 28)
+car entering station with 33 free seats
+car departed station with 14 new passenger(s) (expected 14)
+Looks good!
+
+RESULTADO: APROVADO (exit 0, Looks good!, capacidades conferidas).
+RESUMO: 10/10 execucoes aprovadas.

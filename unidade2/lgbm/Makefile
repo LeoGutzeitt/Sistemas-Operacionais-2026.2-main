@@ -1,9 +1,12 @@
 CC ?= gcc
-CFLAGS = -Wall -Wextra -pthread -std=c99 -O2
+ifeq ($(origin CC),default)
+    CC = gcc
+endif
+CFLAGS = -Wall -Wextra -pthread -std=c99 -D_DEFAULT_SOURCE -O2
 LDFLAGS = -pthread
 TARGET = sync_car
-SOURCES = sync_car.c main.c
-OBJECTS = sync_car.o main.o
+SOURCES = sync_car.c sync_car-runner.c
+OBJECTS = sync_car.o sync_car-runner.o
 
 ifeq ($(OS),Windows_NT)
     RM = rm -f
@@ -24,7 +27,7 @@ $(TARGET): $(OBJECTS)
 sync_car.o: sync_car.c sync_car.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-main.o: main.c sync_car.h
+sync_car-runner.o: sync_car-runner.c sync_car.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 test: $(TARGET)

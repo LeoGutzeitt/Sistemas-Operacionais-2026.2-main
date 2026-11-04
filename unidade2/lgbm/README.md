@@ -1,5 +1,16 @@
 # METROREC - Sincronização de Vagões e Embarque de Passageiros (LGBM)
 
+> Atualização de 04/11/2026: `main.c` foi substituído pelo teste fornecido
+> `sync_car-runner.c`. O Makefile compila esse runner. Execute `make test`
+> no Linux ou `mingw32-make test` no Windows com MinGW. O runner não oferece
+> os sete cenários nomeados nem o modo CLI descritos na documentação anterior
+> abaixo; ele testa 100 passageiros com capacidades aleatórias, vagões sem
+> vagas, estação vazia e espera pela confirmação de embarque.
+> Consulte `evidencias.log` para os resultados efetivamente executados.
+> No Windows, o runner desativa `alarm()`, portanto use um timeout externo
+> para detectar travamentos. Os pacotes e relatórios anteriores a esta
+> atualização ainda precisam ser regenerados antes da entrega.
+
 **Disciplina:** Sistemas Operacionais (2026.2)  
 **Aluno:** Leonardo Gutzeit Borgmann Matos  
 **E-mail / Login:** `lgbm@cesar.school` (`lgbm`)  

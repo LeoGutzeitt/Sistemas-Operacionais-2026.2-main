@@ -12,6 +12,7 @@ mandelbrot
 
 times.txt
 evidencias.log
+!unidade2/lgbm/evidencias.log
 
 # Diretórios temporários
 *.swp
