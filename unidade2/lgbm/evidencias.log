@@ -155,3 +155,10 @@ Limitacao: verificacao local Windows/MinGW; autocheck remoto Linux ainda nao exe
 Backup completo publicado em codex/ja-produzido.
 Validacao na raiz: mingw32-make -B test
 Resultado: exit 0, Looks good!; PDF preservado em unidade2/lgbm.pdf.
+
+=== Correcao do caminho do binario exigido pelo autocheck ===
+Makefile da raiz agora compila diretamente para ./sync_car (Linux) ou ./sync_car.exe (Windows).
+Executado: mingw32-make -B test; exit 0; Looks good!.
+Confirmada existencia de sync_car.exe na raiz.
+Conferida receita Linux com mingw32-make -Bn OS=Linux: -o sync_car.
+Limitacao: runners remotos do autocheck nao executados nesta verificacao.

@@ -5,6 +5,7 @@ resumo.md
 *.o
 *.out
 *.exe
+/sync_car
 *.pgm
 *.log
 processflow
