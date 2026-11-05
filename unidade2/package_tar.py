@@ -7,7 +7,7 @@ lgbm_dir = os.path.join(base_dir, 'lgbm')
 tar_path = os.path.join(base_dir, 'lgbm.tar')
 
 # Files to include in tar
-included_files = ['sync_car.c', 'sync_car.h', 'main.c', 'Makefile', 'README.md']
+included_files = ['sync_car.c', 'sync_car.h', 'sync_car-runner.c', 'Makefile', 'README.md']
 
 with tarfile.open(tar_path, 'w') as tar:
     for fname in included_files:

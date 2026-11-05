@@ -143,3 +143,10 @@ Looks good!
 
 RESULTADO: APROVADO (exit 0, Looks good!, capacidades conferidas).
 RESUMO: 10/10 execucoes aprovadas.
+
+=== Validacao apos erro do autocheck: Makefile ausente na raiz ===
+Correcao: Makefile na raiz delega para unidade2/lgbm.
+Comando executado na raiz: mingw32-make -B test
+Resultado: recompilacao completa e teste aprovados, exit 0, Looks good!.
+Aviso do runner: unused parameter foo.
+Limitacao: verificacao local Windows/MinGW; autocheck remoto Linux ainda nao executado.
