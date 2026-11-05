@@ -23,3 +23,5 @@ evidencias.log
 # Scripts locais de geracao dos arquivos de entrega
 /unidade2/generate_pdf.py
 /unidade2/package_tar.py
+/unidade2/format_report.py
+/tmp/pdfs/
