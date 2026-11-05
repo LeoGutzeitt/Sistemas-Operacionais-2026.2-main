@@ -150,3 +150,8 @@ Comando executado na raiz: mingw32-make -B test
 Resultado: recompilacao completa e teste aprovados, exit 0, Looks good!.
 Aviso do runner: unused parameter foo.
 Limitacao: verificacao local Windows/MinGW; autocheck remoto Linux ainda nao executado.
+
+=== Reorganizacao da main: somente Unidade 2 ===
+Backup completo publicado em codex/ja-produzido.
+Validacao na raiz: mingw32-make -B test
+Resultado: exit 0, Looks good!; PDF preservado em unidade2/lgbm.pdf.

@@ -1,4 +1,0 @@
-task um /bin/sleep 2
-task dois /bin/echo dois
-run parallel um dois
-exit
