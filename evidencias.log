@@ -80,7 +80,7 @@ Data: 2026-11-16 (America/Sao_Paulo)
 === Ponto 10 e capturas ===
 - Seção 10 do relatório reescrita em parágrafo corrido; no PDF renderizado ocupa nove linhas.
 - Tentativa local de compilação para obter capturas de execução: `mingw32-make -B`; não iniciou por erro de realocação de DLL do Windows.
-- Não foram geradas capturas de execução, pois o programa não pôde ser iniciado localmente e não há captura da rodada aprovada do autocheck. Prints permanecem pendentes.
+- Não consegui gerar os prints: o MinGW falhou ao iniciar com erro de realocação de DLL do Windows, antes de compilar/executar o programa. Também não recebi captura da rodada aprovada do autocheck. Nenhuma imagem foi inventada; os prints permanecem pendentes.
 
 === Ajuste solicitado pelo usuário ===
 Data: 2026-11-16 (America/Sao_Paulo)

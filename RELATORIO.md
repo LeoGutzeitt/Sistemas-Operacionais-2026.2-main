@@ -90,6 +90,8 @@ O horário exato não foi incluído nas transcrições recebidas. A ordem acima 
 
 `evidencias.log` contém as falhas locais de inicialização do MinGW, a primeira transcrição do autocheck, a interrupção por SIGSYS, a mudança para gravação direta e a confirmação posterior do usuário. A transcrição detalhada da última rodada ainda precisa ser anexada.
 
+Não consegui gerar os prints solicitados porque as tentativas de compilação e execução local não puderam começar: o MinGW falhou ao carregar, apresentando um erro de realocação de DLL do Windows. Como consequência, não foi possível abrir o programa para capturar sua saída. Também não recebi uma captura da rodada aprovada no autocheck; por isso, não incluí imagens que não fossem evidências reais.
+
 Prints solicitados pelo guia:
 
 - Erro principal: **pendente de anexar**. A linha correspondente no `evidencias.log` descreve o SIGSYS da primeira rodada.
