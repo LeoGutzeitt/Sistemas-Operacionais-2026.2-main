@@ -45,4 +45,4 @@ Use os dados de cinco clientes e os comandos apresentados no enunciado, execute 
 
 ## Ambiente
 
-O desenvolvimento foi feito em Windows. O código usa C11 padrão e destina-se a Linux, Unix e macOS. A versão anterior à gravação direta de saída compilou no autocheck e passou o caso `customer.txt` ausente. O exemplo principal foi interrompido pelo sandbox do Greep (SIGSYS/seccomp), antes de avaliar o algoritmo. A alteração para gravar diretamente em `result.txt` ainda requer compilação e teste. Localmente, o GCC/MinGW falha ao iniciar por erro de realocação de DLL e WSL não está acessível. Consulte `evidencias.log` para os detalhes.
+O desenvolvimento foi feito em Windows. O código usa C11 padrão e destina-se a Linux, Unix e macOS. Após a alteração para gravar diretamente em `result.txt`, o usuário informou que a nova rodada do autocheck passou. O registro detalhado dessa rodada deve ser anexado a `evidencias.log` quando disponível. Localmente, o GCC/MinGW falha ao iniciar por erro de realocação de DLL e WSL não está acessível. Consulte `evidencias.log` para os detalhes.

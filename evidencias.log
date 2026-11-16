@@ -55,3 +55,12 @@ Origem: transcrição colada no chat; não é uma execução local observada pel
 - A alteração ainda requer compilação e repetição do exemplo e dos casos de erro. Saída parcial pode permanecer em result.txt se uma linha posterior for inválida.
 - O PDF-base foi atualizado para registrar o resultado remoto e distinguir a versão testada da alteração recente ainda não validada.
 - Regenerado lgbm.pdf após esse ajuste; pypdf confirmou duas páginas e a presença das notas de saída direta e revalidação pendente. Páginas renderizadas com Poppler e revisadas visualmente.
+
+=== Atualização de resultado informada pelo usuário ===
+Data de recebimento: 2026-11-16 (America/Sao_Paulo)
+Origem: mensagem do usuário no chat; transcrição detalhada do autocheck não fornecida.
+- O usuário informou que a rodada posterior passou nos testes após a correção para gravação direta em result.txt.
+- Registrar como confirmação do usuário; não acrescentar nomes de casos, códigos ou métricas além dos observados na transcrição anterior.
+- Solicitar/anexar a transcrição final à evidência antes de declarar no relatório quais casos específicos passaram.
+- README.md, RELATORIO.md e lgbm.pdf atualizados para refletir essa confirmação e a ausência da transcrição detalhada.
+- PDF regenerado em duas páginas, conferido com pypdf e renderizado com Poppler para inspeção visual.

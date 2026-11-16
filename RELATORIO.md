@@ -1,6 +1,6 @@
 # Relatório — Implementação 5: Algoritmo do Banqueiro
 
-> Relatório-base. A compilação e o caso de erro sem `customer.txt` passaram no autocheck informado pelo usuário. A execução do exemplo principal foi interrompida pelo sandbox antes de produzir uma avaliação do algoritmo; este resultado ainda precisa ser repetido em ambiente funcional.
+> Relatório-base. O usuário informou que a rodada posterior do autocheck passou após a gravação direta em `result.txt`. A transcrição detalhada dessa rodada não foi fornecida; registrar os casos e resultados específicos quando ela estiver disponível.
 
 ## Identificação
 
@@ -27,7 +27,7 @@ As respostas são escritas diretamente em `result.txt`. Se um erro de formato ou
 
 ## Testes realizados
 
-Na versão enviada ao autocheck, a compilação foi concluída e o caso `sem_customer_txt` passou com código de saída 1. No caso `exemplo_do_professor`, o sandbox encerrou o processo com SIGSYS (exit 159) por uma syscall bloqueada por seccomp. A hipótese de que a renomeação do arquivo de saída provocou o bloqueio motivou a gravação direta em `result.txt`. Esta alteração posterior ainda não foi compilada nem revalidada. O autocheck informou 100% dos testes públicos concluídos, mas o critério de implementação registra a interrupção. A transcrição recebida está em `evidencias.log`.
+Na primeira rodada do autocheck, a compilação foi concluída e o caso `sem_customer_txt` passou com código de saída 1. O caso `exemplo_do_professor` foi encerrado pelo sandbox com SIGSYS (exit 159) antes de avaliar o algoritmo. Após substituir a renomeação por gravação direta em `result.txt`, o usuário informou que os testes passaram. Como a transcrição da rodada final não foi recebida, ainda falta registrar seus casos e códigos de saída detalhados em `evidencias.log`.
 
 Na sessão local, `gcc` e `mingw32-make` ainda falham ao iniciar devido a erro de realocação de DLL do Windows, e o WSL retorna acesso negado.
 
@@ -35,8 +35,8 @@ Quando o toolchain estiver disponível, executar o exemplo completo do enunciado
 
 ## Dificuldades e limitações
 
-A principal dificuldade desta etapa é que o sandbox do autocheck bloqueou a execução do cenário principal. A compilação foi confirmada pelo autocheck e um caso de tratamento de erro passou, mas o exemplo do professor e os demais cenários ainda precisam de execução sem essa restrição. O PDF atual é uma base e deverá ser atualizado com os resultados finais.
+A principal dificuldade foi a interrupção por seccomp na primeira rodada do autocheck. A rodada posterior foi informada como aprovada pelo usuário. O registro completo dos casos aprovados deve ser incorporado às evidências para finalizar este relatório.
 
 ## Conclusão
 
-A implementação cobre a leitura das entradas, os comandos previstos e a validação de segurança. A compilação e um caso de erro passaram no autocheck. A validação do exemplo principal permanece pendente porque o processo foi terminado pelo sandbox, não por um resultado do programa. A tentativa de evitar a chamada de renomeação do arquivo também requer novo teste.
+A implementação cobre a leitura das entradas, os comandos previstos e a validação de segurança. Segundo o usuário, a rodada do autocheck após a mudança para gravação direta passou. A transcrição detalhada dos casos deve ser anexada para que o relatório final tenha evidências reproduzíveis.
