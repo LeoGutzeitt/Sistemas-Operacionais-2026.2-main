@@ -27,3 +27,9 @@ Tentativas de validação local observadas nas sessões anteriores:
 Conferência estática:
 - git diff --check — sem erros de whitespace reportados.
 - Conferidos os caminhos dos arquivos, as regras de exclusão de arquivos de dados e o alvo padrão do Makefile.
+
+PDF-base do relatório:
+- Gerado lgbm.pdf com duas páginas a partir do conteúdo de RELATORIO.md.
+- Extração estrutural confirmou duas páginas e texto legível.
+- Páginas renderizadas em PNG com Poppler e revisadas visualmente.
+- O PDF declara explicitamente que compilação e testes funcionais ainda estão pendentes; não é o relatório final validado.
