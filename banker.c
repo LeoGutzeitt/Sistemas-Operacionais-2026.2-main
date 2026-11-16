@@ -9,7 +9,6 @@
 #define CUSTOMER_FILE "customer.txt"
 #define COMMAND_FILE "commands.txt"
 #define RESULT_FILE "result.txt"
-#define TEMP_RESULT_FILE "result.txt.tmp"
 #define MAX_LINE_LENGTH 65536
 
 struct banker_state {
@@ -474,9 +473,9 @@ static int process_commands(struct banker_state *state)
         fprintf(stderr, "Erro: nao foi possivel abrir %s: %s\n", COMMAND_FILE, strerror(errno));
         return 0;
     }
-    output = fopen(TEMP_RESULT_FILE, "w");
+    output = fopen(RESULT_FILE, "w");
     if (output == NULL) {
-        fprintf(stderr, "Erro: nao foi possivel criar %s: %s\n", TEMP_RESULT_FILE, strerror(errno));
+        fprintf(stderr, "Erro: nao foi possivel criar %s: %s\n", RESULT_FILE, strerror(errno));
         fclose(input);
         return 0;
     }
@@ -490,7 +489,7 @@ static int process_commands(struct banker_state *state)
         goto cleanup;
     }
     if (fflush(output) != 0 || ferror(output)) {
-        fprintf(stderr, "Erro: falha ao gravar %s.\n", TEMP_RESULT_FILE);
+        fprintf(stderr, "Erro: falha ao gravar %s.\n", RESULT_FILE);
         goto cleanup;
     }
     success = 1;
@@ -501,15 +500,6 @@ cleanup:
     }
     if (fclose(output) != 0) {
         success = 0;
-    }
-    if (success) {
-        if (rename(TEMP_RESULT_FILE, RESULT_FILE) != 0) {
-            fprintf(stderr, "Erro: nao foi possivel atualizar %s: %s\n", RESULT_FILE, strerror(errno));
-            success = 0;
-        }
-    }
-    if (!success) {
-        remove(TEMP_RESULT_FILE);
     }
     return success;
 }

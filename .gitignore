@@ -18,11 +18,9 @@ evidencias.log
 /customer.txt
 /commands.txt
 /result.txt
-/result.txt.tmp
 unidade2/implementacao5-base-anterior/customer.txt
 unidade2/implementacao5-base-anterior/commands.txt
 unidade2/implementacao5-base-anterior/result.txt
-unidade2/implementacao5-base-anterior/result.txt.tmp
 
 # Diretórios temporários
 *.swp

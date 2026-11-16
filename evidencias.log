@@ -32,4 +32,26 @@ PDF-base do relatório:
 - Gerado lgbm.pdf com duas páginas a partir do conteúdo de RELATORIO.md.
 - Extração estrutural confirmou duas páginas e texto legível.
 - Páginas renderizadas em PNG com Poppler e revisadas visualmente.
-- O PDF declara explicitamente que compilação e testes funcionais ainda estão pendentes; não é o relatório final validado.
+- O PDF declara explicitamente as limitações da validação e não é o relatório final validado.
+
+=== Resultado de autocheck informado pelo usuário ===
+Data de recebimento: 2026-11-16 (America/Sao_Paulo)
+Origem: transcrição colada no chat; não é uma execução local observada pelo agente.
+- Compilação: passou, compilação concluída.
+- Tratamento de erro / sem_customer_txt: passou; código de saída 1.
+- Implementação / exemplo_do_professor: execução encerrada por violação de seccomp (SIGSYS, exit 159) ao tentar syscall bloqueada pelo sandbox Greep.
+- A transcrição declara que o encerramento decorreu da política seccomp, não do código avaliado. Portanto, o exemplo não produziu resultado funcional e não deve ser contado como aprovação ou reprovação do algoritmo.
+- Resumo do autocheck recebido: 100% nos testes públicos; o critério de implementação, contudo, mostra a interrupção acima.
+- A compilação remota e o teste de erro passam a constar como evidência fornecida pelo usuário; os demais testes funcionais continuam pendentes.
+
+=== Dados de referência fornecidos pelo usuário ===
+- Recebidos os vetores de cinco clientes e a sequência RQ/RL/* do exemplo do professor.
+- Recebido também o texto de saída esperado, incluindo o estado MAXIMUM / ALLOCATION / NEED e as três decisões finais.
+- Esses conteúdos são referência para comparação; não foram gravados em customer.txt, commands.txt ou result.txt e não representam execução local do binário.
+
+=== Ajuste após a falha SIGSYS ===
+- Inferência técnica: a chamada C rename() usada para publicar result.txt pode acionar a syscall bloqueada pelo sandbox. A syscall específica não foi informada no relatório do Greep.
+- Removida a renomeação do arquivo temporário; o programa passa a escrever diretamente em result.txt.
+- A alteração ainda requer compilação e repetição do exemplo e dos casos de erro. Saída parcial pode permanecer em result.txt se uma linha posterior for inválida.
+- O PDF-base foi atualizado para registrar o resultado remoto e distinguir a versão testada da alteração recente ainda não validada.
+- Regenerado lgbm.pdf após esse ajuste; pypdf confirmou duas páginas e a presença das notas de saída direta e revalidação pendente. Páginas renderizadas com Poppler e revisadas visualmente.

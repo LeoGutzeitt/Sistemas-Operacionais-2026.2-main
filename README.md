@@ -9,7 +9,7 @@ Esta atividade implementa o algoritmo do Banqueiro com números variáveis de cl
 - `evidencias.log`: registra comandos executados, resultados e limitações de validação.
 - `RELATORIO.md`: texto-fonte do relatório técnico; `lgbm.pdf` contém a versão-base e ainda deve ser atualizado com os resultados reais dos testes.
 
-`customer.txt`, `commands.txt`, `result.txt` e o resultado temporário são arquivos locais de execução e estão ignorados pelo Git.
+`customer.txt`, `commands.txt` e `result.txt` são arquivos locais de execução e estão ignorados pelo Git.
 
 ## Compilação
 
@@ -37,7 +37,7 @@ Passe um argumento inteiro positivo para cada tipo de recurso. Por exemplo:
 
 No diretório de execução, `customer.txt` contém uma linha por cliente, com o máximo de cada tipo de recurso separado por vírgula. `commands.txt` contém um comando por linha: `RQ <cliente> <vetor>`, `RL <cliente> <vetor>` ou `*`. O programa grava a resposta em `result.txt`.
 
-Pedidos são verificados nesta ordem: máximo individual, disponibilidade e segurança do estado. Pedidos indisponíveis ou inseguros são negados com as mensagens definidas no enunciado. Comandos ou arquivos malformados, cliente inexistente e liberações acima do que está alocado encerram a execução com uma mensagem de erro. `result.txt` só é substituído após o processamento válido de todos os comandos.
+Pedidos são verificados nesta ordem: máximo individual, disponibilidade e segurança do estado. Pedidos indisponíveis ou inseguros são negados com as mensagens definidas no enunciado. Comandos ou arquivos malformados, cliente inexistente e liberações acima do que está alocado encerram a execução com uma mensagem de erro. O programa grava as respostas diretamente em `result.txt`.
 
 ## Teste de referência
 
@@ -45,4 +45,4 @@ Use os dados de cinco clientes e os comandos apresentados no enunciado, execute 
 
 ## Ambiente
 
-O desenvolvimento foi feito em Windows. O código usa C11 padrão e destina-se a Linux, Unix e macOS. A compilação local ainda precisa ser confirmada: o GCC/MinGW disponível falha ao iniciar por erro de realocação de DLL, e WSL não está acessível nesta sessão. Consulte `evidencias.log` para os detalhes.
+O desenvolvimento foi feito em Windows. O código usa C11 padrão e destina-se a Linux, Unix e macOS. A versão anterior à gravação direta de saída compilou no autocheck e passou o caso `customer.txt` ausente. O exemplo principal foi interrompido pelo sandbox do Greep (SIGSYS/seccomp), antes de avaliar o algoritmo. A alteração para gravar diretamente em `result.txt` ainda requer compilação e teste. Localmente, o GCC/MinGW falha ao iniciar por erro de realocação de DLL e WSL não está acessível. Consulte `evidencias.log` para os detalhes.
