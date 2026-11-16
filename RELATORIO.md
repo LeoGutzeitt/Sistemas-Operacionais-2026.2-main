@@ -121,10 +121,4 @@ Com mais tempo, eu ampliaria os testes de formato para cobrir arquivos vazios, l
 
 ## 10. Se eu tivesse mais 2 horas
 
-1. Repetiria o exemplo completo do professor e guardaria a transcrição integral do autocheck.
-2. Executaria casos separados para comando desconhecido, cliente inexistente e vetor com dimensão incorreta.
-3. Testaria liberação acima da alocação e pedido acima do máximo enquanto também faltam recursos.
-4. Conferiria byte a byte as palavras, símbolos e números da saída de referência.
-5. Testaria arquivos vazios, linhas excedendo o limite e valores maiores que `INT_MAX`.
-6. Recompilaria após `make clean` em Linux e guardaria a saída sem warnings.
-7. Capturaria os prints do erro principal e da validação final para anexar junto ao relatório.
+Se eu tivesse mais duas horas, repetiria a compilação limpa e o exemplo completo em Linux, salvando a transcrição integral e comparando cada palavra, símbolo e número de `result.txt` com a referência. Depois, executaria casos separados para comando desconhecido, cliente inexistente, vetor com dimensão incorreta e liberação maior do que a alocação, além de verificar a precedência entre limite máximo e disponibilidade. Também testaria arquivos vazios, linhas muito longas e valores nos limites de `INT_MAX`, observando se cada erro encerra sem corromper o estado. Revisaria os avisos do compilador e usaria uma ferramenta de análise de memória, se disponível, para conferir os caminhos de alocação e liberação. Por fim, organizaria a transcrição final e capturaria as telas reais do erro principal e da saída aprovada para anexar às evidências. Isso deixaria a entrega mais fácil de reproduzir e de avaliar.

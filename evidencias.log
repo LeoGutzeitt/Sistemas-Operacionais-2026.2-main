@@ -76,3 +76,14 @@ Data: 2026-11-16 (America/Sao_Paulo)
 - RELATORIO.md reestruturado nas dez seções do Guia de Relatórios.
 - lgbm.pdf regenerado com três páginas e conferido por extração de texto e inspeção visual das páginas renderizadas.
 - O relatório marca a transcrição final do autocheck e os prints obrigatórios como pendentes, pois não foram recebidos.
+
+=== Ponto 10 e capturas ===
+- Seção 10 do relatório reescrita em parágrafo corrido; no PDF renderizado ocupa nove linhas.
+- Tentativa local de compilação para obter capturas de execução: `mingw32-make -B`; não iniciou por erro de realocação de DLL do Windows.
+- Não foram geradas capturas de execução, pois o programa não pôde ser iniciado localmente e não há captura da rodada aprovada do autocheck. Prints permanecem pendentes.
+
+=== Ajuste solicitado pelo usuário ===
+Data: 2026-11-16 (America/Sao_Paulo)
+- Seção 10 reescrita em parágrafo corrido com 8 a 10 linhas no PDF, conforme pedido.
+- Nova tentativa local de `mingw32-make -B` falhou antes de iniciar por erro de realocação de DLL do Windows.
+- Não foi possível gerar captura de uma execução local do programa. A confirmação de aprovação do autocheck não veio acompanhada de captura; nenhuma tela de execução foi fabricada.
