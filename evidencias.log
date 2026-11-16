@@ -1,0 +1,29 @@
+Implementação 5 — Algoritmo do Banqueiro
+Data: 2026-11-16 (America/Sao_Paulo)
+Diretório de trabalho: raiz do repositório.
+
+Organização:
+- banker.c, Makefile, README.md e RELATORIO.md ficam na raiz para atender ao enunciado.
+- A Implementação 4 permanece em unidade2/lgbm/.
+- O rascunho anterior do Banqueiro foi separado em unidade2/implementacao5-base-anterior/.
+- customer.txt, commands.txt, result.txt e result.txt.tmp são ignorados pelo Git.
+
+Implementação registrada:
+- Argumentos validados como totais positivos de recursos.
+- customer.txt lido como máximos por cliente, com um vetor CSV por linha.
+- Matrizes maximum, allocation e need e vetor available mantidos em memória.
+- RQ valida máximo antes da disponibilidade, faz alocação provisória e desfaz pedidos que produziriam estado inseguro.
+- RL valida cliente, vetor e limites da alocação corrente.
+- * imprime maximum, allocation, need e available.
+- Comandos e arquivos malformados geram erro; result.txt só é substituído após sucesso no processamento completo.
+
+Tentativas de validação local observadas nas sessões anteriores:
+- gcc -std=c11 -Wall -Wextra -Wpedantic ... — não iniciou; MinGW informou erro de realocação de DLL do Windows.
+- mingw32-make clean / mingw32-make — não iniciou pelo mesmo erro.
+- mingw32-make -B na raiz com o Makefile da Implementação 5 — não iniciou pelo mesmo erro; nenhum banker foi produzido.
+- wsl --status — retornou Wsl/E_ACCESSDENIED.
+- Portanto, compilação e testes funcionais ainda não foram confirmados; não registrar como aprovados.
+
+Conferência estática:
+- git diff --check — sem erros de whitespace reportados.
+- Conferidos os caminhos dos arquivos, as regras de exclusão de arquivos de dados e o alvo padrão do Makefile.
