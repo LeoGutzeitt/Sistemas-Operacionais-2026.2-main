@@ -7,7 +7,7 @@ Esta atividade implementa o algoritmo do Banqueiro com números variáveis de cl
 - `banker.c`: valida os argumentos e arquivos, mantém `maximum`, `allocation`, `need` e `available`, processa `RQ`, `RL` e `*`, e verifica estados seguros.
 - `Makefile`: compila `banker` na raiz e limpa somente o executável e os objetos desta atividade.
 - `evidencias.log`: registra comandos executados, resultados e limitações de validação.
-- `RELATORIO.md`: texto-fonte do relatório técnico; `lgbm.pdf` contém a versão-base e ainda deve ser atualizado com os resultados reais dos testes.
+- `RELATORIO.md`: texto-fonte do relatório organizado conforme o Guia de Relatórios; `lgbm.pdf` é a versão diagramada. As evidências finais detalhadas e os prints ainda podem ser anexados.
 
 `customer.txt`, `commands.txt` e `result.txt` são arquivos locais de execução e estão ignorados pelo Git.
 

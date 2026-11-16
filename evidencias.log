@@ -15,7 +15,7 @@ Implementação registrada:
 - RQ valida máximo antes da disponibilidade, faz alocação provisória e desfaz pedidos que produziriam estado inseguro.
 - RL valida cliente, vetor e limites da alocação corrente.
 - * imprime maximum, allocation, need e available.
-- Comandos e arquivos malformados geram erro; result.txt só é substituído após sucesso no processamento completo.
+- Comandos e arquivos malformados geram erro; result.txt é gravado diretamente e pode conter saída parcial se houver erro posterior.
 
 Tentativas de validação local observadas nas sessões anteriores:
 - gcc -std=c11 -Wall -Wextra -Wpedantic ... — não iniciou; MinGW informou erro de realocação de DLL do Windows.
@@ -64,3 +64,15 @@ Origem: mensagem do usuário no chat; transcrição detalhada do autocheck não 
 - Solicitar/anexar a transcrição final à evidência antes de declarar no relatório quais casos específicos passaram.
 - README.md, RELATORIO.md e lgbm.pdf atualizados para refletir essa confirmação e a ausência da transcrição detalhada.
 - PDF regenerado em duas páginas, conferido com pypdf e renderizado com Poppler para inspeção visual.
+
+=== Registro de aprovação dos testes ===
+Data: 2026-11-16 (America/Sao_Paulo)
+Origem: confirmação do usuário no chat.
+- O usuário confirmou que a implementação passou nos testes após a correção para gravar diretamente em result.txt.
+- A transcrição detalhada da rodada final não foi fornecida; este registro não atribui nomes de testes, comandos ou códigos de saída não observados.
+
+=== Relatório reorganizado conforme o guia ===
+Data: 2026-11-16 (America/Sao_Paulo)
+- RELATORIO.md reestruturado nas dez seções do Guia de Relatórios.
+- lgbm.pdf regenerado com três páginas e conferido por extração de texto e inspeção visual das páginas renderizadas.
+- O relatório marca a transcrição final do autocheck e os prints obrigatórios como pendentes, pois não foram recebidos.
