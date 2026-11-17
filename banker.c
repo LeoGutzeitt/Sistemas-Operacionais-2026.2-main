@@ -222,17 +222,23 @@ static int load_customers(struct banker_state *state)
     return 1;
 }
 
-static int parse_client_id(const char *text, size_t *customer_count, size_t *client)
+static int parse_client_id(const char *text, size_t customer_count, size_t *client)
 {
     char *end = NULL;
     unsigned long long parsed;
+    const unsigned char *cursor = (const unsigned char *) text;
 
-    if (text == NULL || *text == '\0' || *text == '-') {
+    if (text == NULL || *text == '\0') {
         return 0;
+    }
+    for (; *cursor != '\0'; ++cursor) {
+        if (!isdigit(*cursor)) {
+            return 0;
+        }
     }
     errno = 0;
     parsed = strtoull(text, &end, 10);
-    if (errno != 0 || end == text || *end != '\0' || parsed >= *customer_count) {
+    if (errno != 0 || end == text || *end != '\0' || parsed >= customer_count) {
         return 0;
     }
     *client = (size_t) parsed;
@@ -254,6 +260,7 @@ static int parse_vector(char **tokens, size_t token_count, size_t resource_count
     return 1;
 }
 
+/* Retorna 1 para seguro, 0 para inseguro e -1 se faltou memoria. */
 static int is_safe(const struct banker_state *state)
 {
     int *work = NULL;
@@ -262,13 +269,13 @@ static int is_safe(const struct banker_state *state)
     size_t customer;
     size_t resource;
     int progress;
-    int safe = 0;
+    int safe;
 
     if (!checked_calloc((void **) &work, state->resource_count, sizeof(*work)) ||
         !checked_calloc((void **) &finished, state->customer_count, sizeof(*finished))) {
         free(work);
         free(finished);
-        return 0;
+        return -1;
     }
     memcpy(work, state->available, state->resource_count * sizeof(*work));
 
@@ -374,7 +381,7 @@ static int process_command_line(char *line, size_t line_number,
                 tokens[0], COMMAND_FILE, line_number);
         return 0;
     }
-    if (token_count < 2 || !parse_client_id(tokens[1], &state->customer_count, &customer)) {
+    if (token_count < 2 || !parse_client_id(tokens[1], state->customer_count, &customer)) {
         fprintf(stderr, "Erro: cliente invalido em %s:%zu.\n", COMMAND_FILE, line_number);
         return 0;
     }
@@ -418,20 +425,34 @@ static int process_command_line(char *line, size_t line_number,
             state->allocation[index] += request[resource];
             state->need[index] -= request[resource];
         }
-        if (is_safe(state)) {
-            fprintf(out, "Allocate to customer %zu the resources ", customer);
-            print_vector(out, request, state->resource_count);
-            fprintf(out, "\n");
-        } else {
-            for (resource = 0; resource < state->resource_count; ++resource) {
-                size_t index = customer * state->resource_count + resource;
-                state->available[resource] += request[resource];
-                state->allocation[index] -= request[resource];
-                state->need[index] += request[resource];
+        {
+            int safety = is_safe(state);
+            if (safety < 0) {
+                for (resource = 0; resource < state->resource_count; ++resource) {
+                    size_t index = customer * state->resource_count + resource;
+                    state->available[resource] += request[resource];
+                    state->allocation[index] -= request[resource];
+                    state->need[index] += request[resource];
+                }
+                fprintf(stderr, "Erro: memoria insuficiente ao verificar estado seguro.\n");
+                result = 0;
+                goto cleanup;
             }
-            fprintf(out, "The customer %zu request ", customer);
-            print_vector(out, request, state->resource_count);
-            fprintf(out, " was denied because result in an unsafe state\n");
+            if (safety) {
+                fprintf(out, "Allocate to customer %zu the resources ", customer);
+                print_vector(out, request, state->resource_count);
+                fprintf(out, "\n");
+            } else {
+                for (resource = 0; resource < state->resource_count; ++resource) {
+                    size_t index = customer * state->resource_count + resource;
+                    state->available[resource] += request[resource];
+                    state->allocation[index] -= request[resource];
+                    state->need[index] += request[resource];
+                }
+                fprintf(out, "The customer %zu request ", customer);
+                print_vector(out, request, state->resource_count);
+                fprintf(out, " was denied because result in an unsafe state\n");
+            }
         }
     } else {
         for (resource = 0; resource < state->resource_count; ++resource) {
