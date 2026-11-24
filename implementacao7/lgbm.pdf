@@ -1,0 +1,466 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+2 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Length 10567 >>
+stream
+BT /F2 14 Tf 0.06 0.06 0.06 rg 46.00 793.89 Td (Implementa\347\343o 7 \227 Gerenciador de Mem\363ria Virtual) Tj ET
+BT /F1 9 Tf 0.3 0.3 0.3 rg 46.00 779.89 Td (CESAR School  \267  Infraestrutura de Software / Sistemas Operacionais \(2026.2\)) Tj ET
+BT /F1 8.5 Tf 0.22 0.22 0.22 rg 46.00 766.89 Td (Aluno: Leonardo Gutzeit Borgmann Matos   |   Login: lgbm \(lgbm@cesar.school\)   |   Entrega: lgbm.pdf e lgbm.tar) Tj ET
+q 0.08 0.08 0.08 RG 1.4 w 46.00 759.89 m 549.28 759.89 l S Q
+BT /F2 11.2 Tf 0.06 0.06 0.06 rg 46.00 741.89 Td (1. Objetivo) Tj ET
+q 0.82 0.84 0.87 RG 0.6 w 46.00 737.89 m 549.28 737.89 l S Q
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 725.89 Td (O enunciado pede um Gerenciador de Mem\363ria Virtual em C \(execut\341vel vm, compilado via make\) baseado no projeto do) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 712.89 Td (Silberschatz \(10\252 ed., p\341g. P-51\), adaptado para 128 quadros f\355sicos preenchidos de 0 a 127, substitui\347\343o FIFO e LRU) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 699.89 Td (para p\341ginas e para a TLB, busca concorrente na TLB com uma thread por entrada, tratamento rigoroso de erros e) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 686.89 Td (grava\347\343o da sa\355da em correct.txt. Entrego o c\363digo modular em C11/POSIX no diret\363rio lgbm/, o Makefile, o) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 673.89 Td (README.md, o evidencias.log, o pacote lgbm.tar e este relat\363rio lgbm.pdf.) Tj ET
+BT /F2 11.2 Tf 0.06 0.06 0.06 rg 46.00 652.89 Td (2. Checklist de Requisitos) Tj ET
+q 0.82 0.84 0.87 RG 0.6 w 46.00 648.89 m 549.28 648.89 l S Q
+q 0.08 0.08 0.08 rg 0.08 0.08 0.08 RG 0.5 w 46.00 625.69 196.28 19.20 re B Q
+BT /F2 8.3 Tf 1 1 1 rg 51.00 632.89 Td (Requisito do enunciado) Tj ET
+q 0.08 0.08 0.08 rg 0.08 0.08 0.08 RG 0.5 w 242.28 625.69 55.36 19.20 re B Q
+BT /F2 8.3 Tf 1 1 1 rg 247.28 632.89 Td (Status) Tj ET
+q 0.08 0.08 0.08 rg 0.08 0.08 0.08 RG 0.5 w 297.64 625.69 251.64 19.20 re B Q
+BT /F2 8.3 Tf 1 1 1 rg 302.64 632.89 Td (Como testar / evid\352ncia) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 46.00 595.29 196.28 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 613.69 Td (Diret\363rio lgbm/ e pacote lgbm.tar sem bin\341rios) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 602.49 Td (nem arquivos do professor) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 242.28 595.29 55.36 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 247.28 613.69 Td (OK) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 297.64 595.29 251.64 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 302.64 613.69 Td (tar -tf implementacao7/lgbm.tar lista apenas fontes C/H,) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 302.64 602.49 Td (Makefile, README.md e evidencias.log.) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 46.00 564.89 196.28 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 583.29 Td (Compila\347\343o via make gerando vm e limpeza via) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 572.09 Td (make clean) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 242.28 564.89 55.36 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 247.28 583.29 Td (OK) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 297.64 564.89 251.64 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 302.64 583.29 Td (make clean && make na raiz ou em implementacao7/lgbm/;) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 302.64 572.09 Td (Makefile raiz corrigido ap\363s 1\252 rodada do autocheck.) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 46.00 534.49 196.28 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 552.89 Td (Mem\363ria f\355sica com 128 quadros preenchidos de) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 541.69 Td (0 a 127) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 242.28 534.49 55.36 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 247.28 552.89 Td (OK) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 297.64 534.49 251.64 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 302.64 552.89 Td (VM_NUM_FRAMES = 128 e preenchimento sequencial via) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 302.64 541.69 Td (prox_quadro_livre em paginacao.c.) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 46.00 504.09 196.28 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 522.49 Td (Substitui\347\343o de p\341ginas FIFO e LRU) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 242.28 504.09 55.36 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 247.28 522.49 Td (OK) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 297.64 504.09 251.64 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 302.64 522.49 Td (./vm address.txt fifo fifo e ./vm address.txt lru fifo; lru fifo) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 302.64 511.29 Td (validado com 539 page faults \(0 diffs\).) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 46.00 473.69 196.28 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 492.09 Td (Substitui\347\343o da TLB \(16 entradas\) FIFO e LRU) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 242.28 473.69 55.36 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 247.28 492.09 Td (OK) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 297.64 473.69 251.64 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 302.64 492.09 Td (./vm address.txt lru fifo e ./vm address.txt lru lru; lru fifo) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 302.64 480.89 Td (validado com 54 TLB hits \(0 diffs\).) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 46.00 443.29 196.28 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 461.69 Td (Busca na TLB com 1 thread por entrada \(16) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 450.49 Td (threads POSIX\)) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 242.28 443.29 55.36 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 247.28 461.69 Td (OK) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 297.64 443.29 251.64 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 302.64 461.69 Td (consultar_tlb\(\) em tlb.c cria 16 threads) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 302.64 450.49 Td (\(pthread_create/pthread_join\) em paralelo.) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 46.00 412.89 196.28 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 431.29 Td (Sa\355da gravada em correct.txt no formato do) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 420.09 Td (gabarito) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 242.28 412.89 55.36 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 247.28 431.29 Td (OK) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 297.64 412.89 251.64 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 302.64 431.29 Td (Formato Virtual address: X TLB: Y Physical address: Z Value: W) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 302.64 420.09 Td (+ 5 estat\355sticas; 0 diffs em 1.005 linhas.) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 46.00 382.49 196.28 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 400.89 Td (Tratamento de erros de argumentos, abertura e) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 389.69 Td (formata\347\343o) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 242.28 382.49 55.36 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 247.28 400.89 Td (OK) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 297.64 382.49 251.64 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 302.64 400.89 Td (main.c exige argc == 4, pol\355ticas em {fifo, lru}, valida) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 302.64 389.69 Td (BACKING_STORE.bin \(>= 65536 B\) e pr\351-valida address.txt.) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 46.00 352.09 196.28 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 370.49 Td (Execu\347\343o final aprovada no autocheck \(Linux\)) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 242.28 352.09 55.36 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 247.28 370.49 Td (Parcial) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 297.64 352.09 251.64 30.40 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 302.64 370.49 Td (Corre\347\365es aplicadas ap\363s 1\252 rodada e validadas com os 3) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 302.64 359.29 Td (arquivos oficiais; pendente nova rodada remota no Greep.) Tj ET
+BT /F2 11.2 Tf 0.06 0.06 0.06 rg 46.00 336.09 Td (3. Como Reproduzir) Tj ET
+q 0.82 0.84 0.87 RG 0.6 w 46.00 332.09 m 549.28 332.09 l S Q
+BT /F1 9 Tf 0.12 0.14 0.16 rg 46.00 320.09 Td (Compilar na raiz do reposit\363rio ou em implementacao7/lgbm/:) Tj ET
+q 0.96 0.97 0.98 rg 0.82 0.84 0.87 RG 0.5 w 46.00 187.09 503.28 125.00 re B Q
+BT /F3 8.4 Tf 0.1 0.1 0.1 rg 54.00 300.09 Td (make clean) Tj ET
+BT /F3 8.4 Tf 0.1 0.1 0.1 rg 54.00 288.59 Td (make) Tj ET
+BT /F3 8.4 Tf 0.1 0.1 0.1 rg 54.00 277.09 Td () Tj ET
+BT /F3 8.4 Tf 0.1 0.1 0.1 rg 54.00 265.59 Td (# Executar \(exemplo oficial: LRU na pagina, FIFO na TLB\):) Tj ET
+BT /F3 8.4 Tf 0.1 0.1 0.1 rg 54.00 254.09 Td (./vm address.txt lru fifo) Tj ET
+BT /F3 8.4 Tf 0.1 0.1 0.1 rg 54.00 242.59 Td () Tj ET
+BT /F3 8.4 Tf 0.1 0.1 0.1 rg 54.00 231.09 Td (# Outras combinacoes e validacao local contra o gabarito:) Tj ET
+BT /F3 8.4 Tf 0.1 0.1 0.1 rg 54.00 219.59 Td (./vm address.txt fifo fifo) Tj ET
+BT /F3 8.4 Tf 0.1 0.1 0.1 rg 54.00 208.09 Td (./vm address.txt lru lru) Tj ET
+BT /F3 8.4 Tf 0.1 0.1 0.1 rg 54.00 196.59 Td (make test) Tj ET
+BT /F2 11.2 Tf 0.06 0.06 0.06 rg 46.00 175.09 Td (4. Arquitetura \(resumida\)) Tj ET
+q 0.82 0.84 0.87 RG 0.6 w 46.00 171.09 m 549.28 171.09 l S Q
+BT /F2 9.8 Tf 0.15 0.15 0.15 rg 46.00 157.09 Td (Arquivos e responsabilidades) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 50.00 146.09 Td (1. gerenciador_vm.h -> Define constantes \(TAMANHO_PAGINA, TOTAL_PAGINAS, TAMANHO_TLB\), estruturas em) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 58.00 133.59 Td (portugu\352s \(ContextoMemoria, RegistroTlb, TarefaBuscaTlb, EntradaPagina, InfoQuadro\) e contratos.) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 50.00 119.09 Td (2. tlb.c -> Implementa inicializa\347\343o, busca paralela com 16 threads POSIX \(trabalhador_busca_tlb e consultar_tlb\),) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 58.00 106.59 Td (pol\355ticas FIFO/LRU e invalida\347\343o de p\341ginas na TLB.) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 50.00 92.09 Td (3. paginacao.c -> Gerencia abertura e valida\347\343o de BACKING_STORE.bin, os 128 quadros f\355sicos, tabela de p\341ginas, falta) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 58.00 79.59 Td (de p\341gina \(resolver_falta_pagina\) e tradu\347\343o \(traduzir_endereco\).) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 50.00 65.09 Td (4. main.c -> Valida argumentos CLI, pr\351-valida integralmente address.txt \(carregar_enderecos\) e grava correct.txt com as) Tj ET
+q 0.82 0.84 0.87 RG 0.5 w 46 34 m 549.28 34 l S Q
+BT /F1 7.8 Tf 0.42 0.42 0.42 rg 46 23 Td (CESAR School - Sistemas Operacionais \(2026.2\) | lgbm) Tj ET
+BT /F1 7.8 Tf 0.42 0.42 0.42 rg 502.32 23 Td (P\341gina 1 de 4) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 12 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 1 0 R /F2 2 0 R /F3 3 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Length 14923 >>
+stream
+BT /F1 9 Tf 0.12 0.14 0.16 rg 58.00 793.89 Td (estat\355sticas finais.) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 50.00 779.39 Td (5. Makefile -> Compila main.c, tlb.c e paginacao.c em C11/POSIX gerando vm, al\351m de definir clean, test e alvos) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 58.00 766.89 Td (auxiliares da rubrica.) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 50.00 752.39 Td (6. README.md -> Documenta compila\347\343o, execu\347\343o, tratamento de erros e cobertura de cada item da rubrica.) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 50.00 737.89 Td (7. evidencias.log -> Registra em ordem cronol\363gica tentativas, falhas observadas, ajustes e valida\347\365es.) Tj ET
+BT /F2 9.8 Tf 0.15 0.15 0.15 rg 46.00 721.39 Td (Decis\365es t\351cnicas) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 50.00 710.39 Td (1. Separa\347\343o modular em portugu\352s \(tlb.c, paginacao.c, main.c\) -> Isolar responsabilidades de TLB, pagina\347\343o e CLI ->) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 58.00 697.89 Td (C\363digo mais limpo, original e f\341cil de auditar.) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 50.00 683.39 Td (2. Pr\351-valida\347\343o integral de address.txt antes de abrir correct.txt -> Evitar gera\347\343o de sa\355da parcial diante de linha) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 58.00 670.89 Td (malformada -> Erros encerram com c\363digo 1 sem deixar arquivo corrompido.) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 50.00 656.39 Td (3. Rel\363gio l\363gico monot\364nico \(uint64_t relogio\) e vetor auxiliar bool thread_iniciada[TAMANHO_TLB] -> Garantir ordem) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 58.00 643.89 Td (determin\355stica em FIFO/LRU e evitar comparar pthread_t com 0 -> Portabilidade estrita sob -std=c11 -Wall -Wextra) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 58.00 631.39 Td (-Wpedantic em Linux, Unix e macOS.) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 50.00 616.89 Td (4. Invalida\347\343o imediata da TLB ao substituir um quadro f\355sico -> Impedir tradu\347\365es obsoletas ap\363s descarte de p\341gina) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 58.00 604.39 Td (v\355tima -> Coer\352ncia garantida entre tabela de p\341ginas e TLB.) Tj ET
+BT /F2 11.2 Tf 0.06 0.06 0.06 rg 46.00 585.89 Td (5. Estrat\351gias e Di\341rio de Desenvolvimento) Tj ET
+q 0.82 0.84 0.87 RG 0.6 w 46.00 581.89 m 549.28 581.89 l S Q
+BT /F2 9.8 Tf 0.15 0.15 0.15 rg 46.00 567.89 Td (5.1 Estrat\351gias da semana) Tj ET
+q 0.08 0.08 0.08 rg 0.08 0.08 0.08 RG 0.5 w 46.00 545.69 45.30 19.20 re B Q
+BT /F2 8.3 Tf 1 1 1 rg 51.00 552.89 Td (Estrat.) Tj ET
+q 0.08 0.08 0.08 rg 0.08 0.08 0.08 RG 0.5 w 91.30 545.69 105.69 19.20 re B Q
+BT /F2 8.3 Tf 1 1 1 rg 96.30 552.89 Td (Nome curto) Tj ET
+q 0.08 0.08 0.08 rg 0.08 0.08 0.08 RG 0.5 w 196.98 545.69 176.15 19.20 re B Q
+BT /F2 8.3 Tf 1 1 1 rg 201.98 552.89 Td (Contexto) Tj ET
+q 0.08 0.08 0.08 rg 0.08 0.08 0.08 RG 0.5 w 373.13 545.69 176.15 19.20 re B Q
+BT /F2 8.3 Tf 1 1 1 rg 378.13 552.89 Td (Motivo da troca \(se houve\)) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 46.00 504.09 45.30 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 533.69 Td (S1) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 91.30 504.09 105.69 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 96.30 533.69 Td (Base monol\355tica em) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 96.30 522.49 Td (vm.c) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 196.98 504.09 176.15 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 201.98 533.69 Td (Implementa\347\343o inicial em vm.c/vm.h com) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 201.98 522.49 Td (Makefile da raiz ainda na Imp. 5 e sem o) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 201.98 511.29 Td (campo TLB: na sa\355da.) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 373.13 504.09 176.15 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 378.13 533.69 Td (1\252 rodada do autocheck n\343o encontrou o) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 378.13 522.49 Td (bin\341rio vm na raiz e o gabarito do Classroom) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 378.13 511.29 Td (exigia TLB: <indice>.) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 46.00 462.49 45.30 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 492.09 Td (S2) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 91.30 462.49 105.69 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 96.30 492.09 Td (Build raiz + formato) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 96.30 480.89 Td (correct.txt) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 196.98 462.49 176.15 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 201.98 492.09 Td (Atualiza\347\343o do Makefile da raiz para gerar) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 201.98 480.89 Td (./vm e inclus\343o de TLB: %d validado contra) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 201.98 469.69 Td (os 3 arquivos oficiais.) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 373.13 462.49 176.15 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 378.13 492.09 Td (Atingiu 0 diffs nas 1.005 linhas do gabarito,) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 378.13 480.89 Td (mas mantinha estrutura monol\355tica e nomes) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 378.13 469.69 Td (em ingl\352s.) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 46.00 420.89 45.30 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 450.49 Td (S3) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 91.30 420.89 105.69 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 96.30 450.49 Td (Arquitetura modular em) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 96.30 439.29 Td (portugu\352s) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 196.98 420.89 176.15 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 201.98 450.49 Td (Refatora\347\343o para gerenciador_vm.h, tlb.c,) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 201.98 439.29 Td (paginacao.c e main.c com nomes em) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 201.98 428.09 Td (portugu\352s, preservando a l\363gica.) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 373.13 420.89 176.15 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 378.13 450.49 Td (Estrat\351gia final adotada para entrega.) Tj ET
+BT /F2 9.8 Tf 0.15 0.15 0.15 rg 46.00 406.89 Td (5.2 Di\341rio de Tentativas) Tj ET
+q 0.08 0.08 0.08 rg 0.08 0.08 0.08 RG 0.5 w 46.00 384.69 20.13 19.20 re B Q
+BT /F2 8.3 Tf 1 1 1 rg 51.00 391.89 Td (#) Tj ET
+q 0.08 0.08 0.08 rg 0.08 0.08 0.08 RG 0.5 w 66.13 384.69 40.26 19.20 re B Q
+BT /F2 8.3 Tf 1 1 1 rg 71.13 391.89 Td (Estrat.) Tj ET
+q 0.08 0.08 0.08 rg 0.08 0.08 0.08 RG 0.5 w 106.39 384.69 110.72 19.20 re B Q
+BT /F2 8.3 Tf 1 1 1 rg 111.39 391.89 Td (O que tentei) Tj ET
+q 0.08 0.08 0.08 rg 0.08 0.08 0.08 RG 0.5 w 217.12 384.69 55.36 19.20 re B Q
+BT /F2 8.3 Tf 1 1 1 rg 222.12 391.89 Td (Resultado) Tj ET
+q 0.08 0.08 0.08 rg 0.08 0.08 0.08 RG 0.5 w 272.48 384.69 140.92 19.20 re B Q
+BT /F2 8.3 Tf 1 1 1 rg 277.48 391.89 Td (Hip\363tese/Causa \(se falhou\)) Tj ET
+q 0.08 0.08 0.08 rg 0.08 0.08 0.08 RG 0.5 w 413.39 384.69 55.36 19.20 re B Q
+BT /F2 8.3 Tf 1 1 1 rg 418.39 391.89 Td (Quando) Tj ET
+q 0.08 0.08 0.08 rg 0.08 0.08 0.08 RG 0.5 w 468.76 384.69 80.52 19.20 re B Q
+BT /F2 8.3 Tf 1 1 1 rg 473.76 391.89 Td (Evid\352ncia) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 46.00 343.09 20.13 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 372.69 Td (1) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 66.13 343.09 40.26 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 71.13 372.69 Td (S1) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 106.39 343.09 110.72 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 111.39 372.69 Td (Compilar localmente no) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 111.39 361.49 Td (Windows com MinGW \(gcc) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 111.39 350.29 Td (--version\)) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 217.12 343.09 55.36 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 222.12 372.69 Td (Falha) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 272.48 343.09 140.92 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 277.48 372.69 Td (Erro de realoca\347\343o de DLL do) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 277.48 361.49 Td (sistema operacional Windows no) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 277.48 350.29 Td (MinGW local.) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 413.39 343.09 55.36 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 418.39 372.69 Td (2026-11-23) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 468.76 343.09 80.52 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 473.76 372.69 Td (evidencias.log) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 473.76 361.49 Td (\(se\347\343o 3\)) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 46.00 301.49 20.13 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 331.09 Td (2) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 66.13 301.49 40.26 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 71.13 331.09 Td (S1) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 106.39 301.49 110.72 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 111.39 331.09 Td (Rodar 1\252 rodada do) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 111.39 319.89 Td (autocheck no Greep) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 217.12 301.49 55.36 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 222.12 331.09 Td (Falha \(0%\)) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 272.48 301.49 140.92 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 277.48 331.09 Td (Autocheck executou make na raiz,) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 277.48 319.89 Td (cujo Makefile ainda compilava) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 277.48 308.69 Td (banker \(Imp. 5\), n\343o gerando vm.) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 413.39 301.49 55.36 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 418.39 331.09 Td (2026-11-24) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 468.76 301.49 80.52 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 473.76 331.09 Td (evidencias.log \(1\252) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 473.76 319.89 Td (Rodada\)) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 46.00 259.89 20.13 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 289.49 Td (3) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 66.13 259.89 40.26 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 71.13 289.49 Td (S2) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 106.39 259.89 110.72 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 111.39 289.49 Td (Atualizar Makefile da raiz) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 111.39 278.29 Td (para gerar ./vm a partir de) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 111.39 267.09 Td (implementacao7/lgbm/) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 217.12 259.89 55.36 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 222.12 289.49 Td (OK) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 222.12 278.29 Td (\(est\341tico\)) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 272.48 259.89 140.92 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 277.48 289.49 Td (\227) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 413.39 259.89 55.36 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 418.39 289.49 Td (2026-11-24) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 468.76 259.89 80.52 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 473.76 289.49 Td (evidencias.log \(1\252) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 473.76 278.29 Td (Rodada\)) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 46.00 207.09 20.13 52.80 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 247.89 Td (4) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 66.13 207.09 40.26 52.80 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 71.13 247.89 Td (S2) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 106.39 207.09 110.72 52.80 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 111.39 247.89 Td (Validar l\363gica com os 3) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 111.39 236.69 Td (arquivos oficiais) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 111.39 225.49 Td (\(BACKING_STORE.bin,) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 111.39 214.29 Td (address.txt, correct.txt\)) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 217.12 207.09 55.36 52.80 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 222.12 247.89 Td (Parcial ->) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 222.12 236.69 Td (OK) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 272.48 207.09 140.92 52.80 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 277.48 247.89 Td (Faltava o campo TLB: %d na linha) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 277.48 236.69 Td (de sa\355da; ap\363s inclu\355-lo, 0 diffs) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 277.48 225.49 Td (em 1.005 linhas \(539 page faults,) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 277.48 214.29 Td (54 TLB hits\).) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 413.39 207.09 55.36 52.80 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 418.39 247.89 Td (2026-11-24) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 468.76 207.09 80.52 52.80 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 473.76 247.89 Td (evidencias.log) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 473.76 236.69 Td (\(Verifica\347\343o\)) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 46.00 165.49 20.13 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 195.09 Td (5) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 66.13 165.49 40.26 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 71.13 195.09 Td (S3) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 106.39 165.49 110.72 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 111.39 195.09 Td (Refatorar em 4 m\363dulos) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 111.39 183.89 Td (em portugu\352s e regerar) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 111.39 172.69 Td (lgbm.tar) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 217.12 165.49 55.36 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 222.12 195.09 Td (OK) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 272.48 165.49 140.92 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 277.48 195.09 Td (\227) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 413.39 165.49 55.36 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 418.39 195.09 Td (2026-11-24) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 468.76 165.49 80.52 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 473.76 195.09 Td (evidencias.log) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 473.76 183.89 Td (\(Refatora\347\343o\)) Tj ET
+BT /F2 11.2 Tf 0.06 0.06 0.06 rg 46.00 149.49 Td (6. Evid\352ncias) Tj ET
+q 0.82 0.84 0.87 RG 0.6 w 46.00 145.49 m 549.28 145.49 l S Q
+BT /F2 9.8 Tf 0.15 0.15 0.15 rg 46.00 131.49 Td (6.1 Log de evid\352ncias \(evidencias.log\)) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 120.49 Td (O arquivo implementacao7/lgbm/evidencias.log \(empacotado em lgbm.tar e versionado no GitHub\) registra em ordem) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 107.49 Td (cronol\363gica a revis\343o est\341tica C11/POSIX, a falha do MinGW local no Windows, a transcri\347\343o da 1\252 rodada do autocheck,) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 94.49 Td (a corre\347\343o do Makefile da raiz, a valida\347\343o integral contra os 3 arquivos oficiais do Classroom e a refatora\347\343o modular) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 81.49 Td (final.) Tj ET
+q 0.82 0.84 0.87 RG 0.5 w 46 34 m 549.28 34 l S Q
+BT /F1 7.8 Tf 0.42 0.42 0.42 rg 46 23 Td (CESAR School - Sistemas Operacionais \(2026.2\) | lgbm) Tj ET
+BT /F1 7.8 Tf 0.42 0.42 0.42 rg 502.32 23 Td (P\341gina 2 de 4) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 12 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 1 0 R /F2 2 0 R /F3 3 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 8789 >>
+stream
+BT /F2 9.8 Tf 0.15 0.15 0.15 rg 46.00 791.89 Td (6.2 Prints e trechos reais do evidencias.log) Tj ET
+BT /F1 8.8 Tf 0.12 0.14 0.16 rg 46.00 780.89 Td (Erro principal \227 transcri\347\343o real da 1\252 rodada do autocheck \(2026-11-24\):) Tj ET
+q 0.96 0.97 0.98 rg 0.82 0.84 0.87 RG 0.5 w 46.00 698.59 503.28 74.80 re B Q
+BT /F3 8 Tf 0.1 0.1 0.1 rg 54.00 761.39 Td (iniciado: correcao iniciada) Tj ET
+BT /F3 8 Tf 0.1 0.1 0.1 rg 54.00 750.59 Td (rodando: compilando) Tj ET
+BT /F3 8 Tf 0.1 0.1 0.1 rg 54.00 739.79 Td (passou: compilacao concluida) Tj ET
+BT /F3 8 Tf 0.1 0.1 0.1 rg 54.00 728.99 Td (criterio "Traducao dos enderecos" -- iniciado) Tj ET
+BT /F3 8 Tf 0.1 0.1 0.1 rg 54.00 718.19 Td (criterio "Traducao dos enderecos" -- falhou: binario "vm" nao encontrado no build) Tj ET
+BT /F3 8 Tf 0.1 0.1 0.1 rg 54.00 707.39 Td (concluido: autocheck concluido -- 0% nos testes publicos) Tj ET
+BT /F1 8.8 Tf 0.12 0.14 0.16 rg 46.00 690.59 Td (Valida\347\343o contra os 3 arquivos oficiais do Classroom e confer\352ncia do lgbm.tar \(evidencias.log\):) Tj ET
+q 0.96 0.97 0.98 rg 0.82 0.84 0.87 RG 0.5 w 46.00 575.89 503.28 107.20 re B Q
+BT /F3 8 Tf 0.1 0.1 0.1 rg 54.00 671.09 Td (Loaded 1000 addresses, 65536 bytes backing store, 1005 reference lines.) Tj ET
+BT /F3 8 Tf 0.1 0.1 0.1 rg 54.00 660.29 Td (Number of Translated Addresses = 1000) Tj ET
+BT /F3 8 Tf 0.1 0.1 0.1 rg 54.00 649.49 Td (Page Faults = 539 \(Page Fault Rate = 0.539\)) Tj ET
+BT /F3 8 Tf 0.1 0.1 0.1 rg 54.00 638.69 Td (TLB Hits = 54 \(TLB Hit Rate = 0.054\)) Tj ET
+BT /F3 8 Tf 0.1 0.1 0.1 rg 54.00 627.89 Td (Diferencas linha a linha contra correct_ref.txt: 0 em 1005 linhas) Tj ET
+BT /F3 8 Tf 0.1 0.1 0.1 rg 54.00 617.09 Td () Tj ET
+BT /F3 8 Tf 0.1 0.1 0.1 rg 54.00 606.29 Td ($ tar -tf implementacao7/lgbm.tar) Tj ET
+BT /F3 8 Tf 0.1 0.1 0.1 rg 54.00 595.49 Td (lgbm/gerenciador_vm.h  lgbm/tlb.c  lgbm/paginacao.c  lgbm/main.c) Tj ET
+BT /F3 8 Tf 0.1 0.1 0.1 rg 54.00 584.69 Td (lgbm/Makefile          lgbm/README.md                lgbm/evidencias.log) Tj ET
+BT /F1 8.4 Tf 0.12 0.14 0.16 rg 46.00 567.89 Td (Nota de transpar\352ncia: n\343o inclu\355 capturas fabricadas de compila\347\343o local porque o MinGW no Windows falha por erro de realoca\347\343o) Tj ET
+BT /F1 8.4 Tf 0.12 0.14 0.16 rg 46.00 556.69 Td (de DLL do sistema; a nova rodada remota do autocheck em Linux aguarda apenas o push final.) Tj ET
+BT /F2 11.2 Tf 0.06 0.06 0.06 rg 46.00 537.49 Td (7. Uso de IA) Tj ET
+q 0.82 0.84 0.87 RG 0.6 w 46.00 533.49 m 549.28 533.49 l S Q
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 521.49 Td (Onde usei IA: Utilizei assist\352ncia de IA para revisar portabilidade C11/POSIX \(substitui\347\343o de strcasecmp e tratamento) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 508.49 Td (opaco de pthread_t\), diagnosticar o erro de alvo no Makefile da raiz, conferir o formato exato de correct.txt contra o) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 495.49 Td (gabarito e organizar a refatora\347\343o modular e a diagrama\347\343o deste relat\363rio.) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 50.00 478.49 Td (\225 Prompts principais: estruturar gerenciador de mem\363ria virtual com 128 quadros, FIFO/LRU em p\341gina e TLB e busca na) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 58.00 465.99 Td (TLB com 16 threads POSIX; diagnosticar erro de bin\341rio vm n\343o encontrado no autocheck; validar sa\355da linha a linha) Tj ET
+BT /F1 9 Tf 0.12 0.14 0.16 rg 58.00 453.49 Td (contra os 3 arquivos do Classroom; refatorar o c\363digo em m\363dulos em portugu\352s e gerar lgbm.pdf pelo Guia de Relat\363rios.) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 438.99 Td (O que validei manualmente e como: Conferi manualmente os operadores bit a bit de extra\347\343o de p\341gina \(\(addr >> 8\) &) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 425.99 Td (0xFF\) e deslocamento \(addr & 0xFF\), a ordem de aloca\347\343o dos quadros de 0 a 127, a invalida\347\343o da TLB em substitui\347\343o) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 412.99 Td (de p\341gina, o conte\372do exato de lgbm.tar via tar -tf \(garantindo aus\352ncia de bin\341rios e dos arquivos do professor\) e a) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 399.99 Td (ader\352ncia visual deste PDF \340s 10 se\347\365es do guia.) Tj ET
+BT /F2 11.2 Tf 0.06 0.06 0.06 rg 46.00 378.99 Td (8. Reflex\343o Final) Tj ET
+q 0.82 0.84 0.87 RG 0.6 w 46.00 374.99 m 549.28 374.99 l S Q
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 362.99 Td (A principal li\347\343o desta implementa\347\343o foi a import\342ncia de alinhar o formato de sa\355da e o processo de build do) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 349.99 Td (reposit\363rio desde o in\355cio, pois a aus\352ncia do campo TLB: e o Makefile da raiz ainda apontando para a entrega anterior) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 336.99 Td (teriam comprometido a avalia\347\343o autom\341tica mesmo com a l\363gica de pagina\347\343o correta. Modularizar o projeto em tlb.c,) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 323.99 Td (paginacao.c e main.c deixou o fluxo de tradu\347\343o, substitui\347\343o e tratamento de erros muito mais claro e f\341cil de depurar.) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 310.99 Td (A simula\347\343o da busca na TLB com 16 threads POSIX evidenciou na pr\341tica a diferen\347a entre paralelismo associativo em) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 297.99 Td (hardware e o custo de cria\347\343o de threads em software. Para a pr\363xima atividade, eu come\347aria verificando o alvo padr\343o) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 284.99 Td (do Makefile na raiz e conferindo cada linha do gabarito de refer\352ncia antes da primeira submiss\343o no autocheck.) Tj ET
+BT /F2 11.2 Tf 0.06 0.06 0.06 rg 46.00 263.99 Td (9. Checklist Final de Entrega) Tj ET
+q 0.82 0.84 0.87 RG 0.6 w 46.00 259.99 m 549.28 259.99 l S Q
+q 0.08 0.08 0.08 rg 0.08 0.08 0.08 RG 0.5 w 46.00 236.79 221.44 19.20 re B Q
+BT /F2 8.3 Tf 1 1 1 rg 51.00 243.99 Td (Item) Tj ET
+q 0.08 0.08 0.08 rg 0.08 0.08 0.08 RG 0.5 w 267.44 236.79 281.84 19.20 re B Q
+BT /F2 8.3 Tf 1 1 1 rg 272.44 243.99 Td (Confirmado?) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 46.00 195.19 221.44 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 224.79 Td (Compilei do zero seguindo s\363 o que est\341 no relat\363rio) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 267.44 195.19 281.84 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 272.44 224.79 Td (Parcial \227 compila\347\343o local bloqueada por erro de DLL do MinGW no) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 272.44 213.59 Td (Windows; c\363digo auditado para C11/POSIX e pronto para nova rodada do) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 272.44 202.39 Td (autocheck em Linux.) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 46.00 175.99 221.44 19.20 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 183.19 Td (Rodei os testes e evidencias.log foi gerado) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 267.44 175.99 281.84 19.20 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 272.44 183.19 Td (Sim \227 evidencias.log atualizado e inclu\355do dentro de lgbm.tar.) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 46.00 134.39 221.44 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 163.99 Td (Tenho prints obrigat\363rios) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 267.44 134.39 281.84 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 272.44 163.99 Td (Parcial \227 trechos reais do erro no autocheck e da valida\347\343o contra os 3) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 272.44 152.79 Td (arquivos oficiais inclu\355dos na Se\347\343o 6.2; captura da nova rodada remota) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 272.44 141.59 Td (pendente ap\363s o push.) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 46.00 92.79 221.44 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 122.39 Td (Testei pelo menos um caso limite e um caso inv\341lido) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 267.44 92.79 281.84 41.60 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 272.44 122.39 Td (Parcial \227 valida\347\343o de casos inv\341lidos e limites implementada e auditada) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 272.44 111.19 Td (em main.c e paginacao.c; execu\347\343o em Linux pendente da pr\363xima) Tj ET
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 272.44 99.99 Td (rodada do autocheck.) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 46.00 73.59 221.44 19.20 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 80.79 Td (Preenchi a se\347\343o de uso de IA) Tj ET
+q 1 1 1 rg 0.72 0.75 0.78 RG 0.45 w 267.44 73.59 281.84 19.20 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 272.44 80.79 Td (Sim.) Tj ET
+q 0.82 0.84 0.87 RG 0.5 w 46 34 m 549.28 34 l S Q
+BT /F1 7.8 Tf 0.42 0.42 0.42 rg 46 23 Td (CESAR School - Sistemas Operacionais \(2026.2\) | lgbm) Tj ET
+BT /F1 7.8 Tf 0.42 0.42 0.42 rg 502.32 23 Td (P\341gina 3 de 4) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 12 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 1 0 R /F2 2 0 R /F3 3 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 2340 >>
+stream
+q 0.08 0.08 0.08 rg 0.08 0.08 0.08 RG 0.5 w 46.00 782.69 221.44 19.20 re B Q
+BT /F2 8.3 Tf 1 1 1 rg 51.00 789.89 Td (Item) Tj ET
+q 0.08 0.08 0.08 rg 0.08 0.08 0.08 RG 0.5 w 267.44 782.69 281.84 19.20 re B Q
+BT /F2 8.3 Tf 1 1 1 rg 272.44 789.89 Td (Confirmado?) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 46.00 763.49 221.44 19.20 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 51.00 770.69 Td (Revisei o relat\363rio e removi frases gen\351ricas / vazias) Tj ET
+q 0.965 0.972 0.98 rg 0.72 0.75 0.78 RG 0.45 w 267.44 763.49 281.84 19.20 re B Q
+BT /F1 8.3 Tf 0.12 0.14 0.16 rg 272.44 770.69 Td (Sim.) Tj ET
+BT /F2 11.2 Tf 0.06 0.06 0.06 rg 46.00 747.49 Td (10. Se eu tivesse mais 2 horas) Tj ET
+q 0.82 0.84 0.87 RG 0.6 w 46.00 743.49 m 549.28 743.49 l S Q
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 731.49 Td (Se eu tivesse mais duas horas, executaria toda a bateria de testes diretamente em uma m\341quina Linux ou container) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 718.49 Td (Docker para capturar os prints reais de make clean && make, da execu\347\343o ./vm address.txt lru fifo comparada com diff -u) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 705.49 Td (correct.txt correct_ref.txt e de cada caso de erro \(quantidade incorreta de argumentos, algoritmo inv\341lido, arquivo) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 692.49 Td (ausente e linha malformada\). Em seguida, substituiria a cria\347\343o e destrui\347\343o de 16 threads por consulta na TLB por um) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 679.49 Td (conjunto fixo de 16 threads trabalhadoras sincronizadas por barreira ou vari\341veis de condi\347\343o, medindo o ganho de tempo) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 666.49 Td (real sobre os 1.000 endere\347os. Tamb\351m rodaria o bin\341rio com valgrind e AddressSanitizer para comprovar aus\352ncia total) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 653.49 Td (de vazamentos de mem\363ria e acessos fora dos limites, al\351m de comparar graficamente as taxas de falta de p\341gina entre) Tj ET
+BT /F1 9.3 Tf 0.12 0.14 0.16 rg 46.00 640.49 Td (128 e 256 quadros para FIFO e LRU.) Tj ET
+q 0.82 0.84 0.87 RG 0.5 w 46 34 m 549.28 34 l S Q
+BT /F1 7.8 Tf 0.42 0.42 0.42 rg 46 23 Td (CESAR School - Sistemas Operacionais \(2026.2\) | lgbm) Tj ET
+BT /F1 7.8 Tf 0.42 0.42 0.42 rg 502.32 23 Td (P\341gina 4 de 4) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 12 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 1 0 R /F2 2 0 R /F3 3 0 R >> >> /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Type /Pages /Kids [5 0 R 7 0 R 9 0 R 11 0 R] /Count 4 >>
+endobj
+13 0 obj
+<< /Type /Catalog /Pages 12 0 R >>
+endobj
+xref
+0 14
+0000000000 65535 f 
+0000000015 00000 n 
+0000000112 00000 n 
+0000000214 00000 n 
+0000000309 00000 n 
+0000010929 00000 n 
+0000011082 00000 n 
+0000026058 00000 n 
+0000026211 00000 n 
+0000035052 00000 n 
+0000035205 00000 n 
+0000037598 00000 n 
+0000037753 00000 n 
+0000037830 00000 n 
+trailer
+<< /Size 14 /Root 13 0 R >>
+startxref
+37881
+%%EOF

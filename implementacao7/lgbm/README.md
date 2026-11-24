@@ -43,12 +43,14 @@ Este projeto implementa um **Gerenciador de Memória Virtual (Virtual Memory Man
 
 ```text
 implementacao7/lgbm/
-├── Makefile       # Compilação (gera executável vm) e limpeza (make clean)
-├── README.md      # Esta documentação técnica
-├── vm.h           # Constantes, structs da TLB, Tabela de Páginas e Frames
-├── vm.c           # Motor de tradução, busca paralela na TLB, FIFO/LRU e CLI
-├── RELATORIO.md   # Texto-fonte do relatório técnico
-└── evidencias.log # Registro de implementação, verificações e notas de ambiente
+├── Makefile          # Compilação modular (gera executável vm) e limpeza (make clean)
+├── README.md         # Esta documentação técnica
+├── gerenciador_vm.h  # Constantes, estruturas (TLB, Tabela de Páginas, Quadros) e contratos
+├── tlb.c             # Busca paralela com 16 threads, inserção FIFO/LRU e invalidação na TLB
+├── paginacao.c       # Tabela de páginas, alocação/substituição de quadros e leitura do disco
+├── main.c            # Validação rigorosa de CLI/arquivos, execução e gravação de correct.txt
+├── RELATORIO.md      # Texto-fonte do relatório técnico
+└── evidencias.log    # Registro de implementação, verificações e notas de ambiente
 ```
 
 ---

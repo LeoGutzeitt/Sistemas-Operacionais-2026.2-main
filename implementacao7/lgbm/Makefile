@@ -3,26 +3,27 @@ CFLAGS = -Wall -Wextra -Wpedantic -std=c11 -pthread -O2
 LDFLAGS = -pthread
 
 TARGET = vm
-SRCS = vm.c
+SRCS = main.c tlb.c paginacao.c
 OBJS = $(SRCS:.c=.o)
+HEADER = gerenciador_vm.h
 
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
 	$(CC) $(OBJS) -o $(TARGET) $(LDFLAGS)
 
-%.o: %.c vm.h
+%.o: %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Alvos auxiliares para demonstracao isolada das etapas da rubrica
-vm-256-notlb: vm.c vm.h
-	$(CC) $(CFLAGS) -DVM_NUM_FRAMES=256 -DVM_USE_TLB=0 vm.c -o $(TARGET) $(LDFLAGS)
+vm-256-notlb: $(SRCS) $(HEADER)
+	$(CC) $(CFLAGS) -DVM_NUM_FRAMES=256 -DVM_USE_TLB=0 $(SRCS) -o $(TARGET) $(LDFLAGS)
 
-vm-128-notlb: vm.c vm.h
-	$(CC) $(CFLAGS) -DVM_NUM_FRAMES=128 -DVM_USE_TLB=0 vm.c -o $(TARGET) $(LDFLAGS)
+vm-128-notlb: $(SRCS) $(HEADER)
+	$(CC) $(CFLAGS) -DVM_NUM_FRAMES=128 -DVM_USE_TLB=0 $(SRCS) -o $(TARGET) $(LDFLAGS)
 
-vm-128-nothreads: vm.c vm.h
-	$(CC) $(CFLAGS) -DVM_NUM_FRAMES=128 -DVM_USE_TLB=1 -DVM_USE_THREADS=0 vm.c -o $(TARGET) $(LDFLAGS)
+vm-128-nothreads: $(SRCS) $(HEADER)
+	$(CC) $(CFLAGS) -DVM_NUM_FRAMES=128 -DVM_USE_TLB=1 -DVM_USE_THREADS=0 $(SRCS) -o $(TARGET) $(LDFLAGS)
 
 test: $(TARGET)
 	@echo "Executando teste padrao (lru fifo)..."

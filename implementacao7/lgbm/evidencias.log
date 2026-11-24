@@ -43,3 +43,11 @@ Origem: transcrição do autocheck (Greep) recebida no chat.
   * TLB Hits = 54 (TLB Hit Rate = 0.054)
   * Diferenças linha a linha contra o gabarito: 0 em 1005 linhas (100% idêntico).
 - Alvo `make test` atualizado para validar `correct.txt` contra `correct_ref.txt` via `diff -u` quando presente localmente.
+
+=== Refatoração Modular em Português (2026-11-24) ===
+- Código reestruturado em 4 arquivos modulares com nomenclatura própria em português:
+  * gerenciador_vm.h (tipos, constantes e contratos)
+  * tlb.c (trabalhador_busca_tlb, consultar_tlb, registrar_na_tlb, invalidar_pagina_tlb)
+  * paginacao.c (iniciar_gerenciador, resolver_falta_pagina, traduzir_endereco)
+  * main.c (carregar_enderecos, executar_traducoes, validacao estrita de CLI)
+- Removidos vm.c e vm.h monolíticos; atualizados Makefile local, Makefile da raiz e lgbm.tar.
