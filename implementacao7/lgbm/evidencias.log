@@ -1,0 +1,24 @@
+Implementação 7 — Gerenciador de Memória Virtual (Virtual Memory Manager)
+Data: 2026-11-23 (America/Sao_Paulo)
+Aluno: Leonardo Gutzeit Borgmann Matos (lgbm@cesar.school)
+Identificador: lgbm
+Diretório de trabalho: implementacao7/lgbm/
+
+1. Organização e Estrutura dos Arquivos:
+- vm.h: Constantes (PAGE_SIZE 256, TOTAL_PAGES 256, VM_NUM_FRAMES 128, MAX_FRAMES 256, TLB_SIZE 16), estruturas da TLB, Tabela de Páginas e Metadados de Frames.
+- vm.c: Motor completo de tradução virtual-física, busca concorrente na TLB com 16 threads POSIX (pthread_create/pthread_join), carregamento sob demanda de BACKING_STORE.bin, substituição FIFO/LRU para páginas e TLB, pré-validação integral de entradas e geração de correct.txt.
+- Makefile: Compila o executável vm em C11/POSIX (-Wall -Wextra -Wpedantic -std=c11 -pthread -O2) e oferece clean, test e alvos auxiliares para cada etapa da rubrica.
+- README.md e RELATORIO.md: Documentação técnica e relatório estruturado conforme o Guia.
+
+2. Revisão Estática e Correções de Portabilidade C11/POSIX:
+- Substituída chamada não-padrão strcasecmp por equals_ignore_case() em C11 puro, evitando erros de compilação em Linux/macOS sob -std=c11.
+- Substituída comparação direta de pthread_t com 0 por vetor auxiliar bool thread_created[TLB_SIZE], garantindo conformidade POSIX estrita (onde pthread_t é tipo opaco).
+- Restringida a interface CLI a exatamente 3 argumentos (argc == 4) e algoritmos estritamente em {fifo, lru}, atendendo integralmente à checagem de erros do enunciado.
+- Implementada pré-validação integral de address.txt antes de abrir correct.txt (evitando criação de arquivo de saída parcial em caso de linha malformada ou arquivo vazio).
+- Adicionada verificação do tamanho mínimo de BACKING_STORE.bin (65536 bytes).
+- Incluídas as 5 linhas de estatísticas finais em correct.txt (Number of Translated Addresses, Page Faults, Page Fault Rate, TLB Hits, TLB Hit Rate).
+
+3. Ambiente Local:
+- Tentativa de compilação local no Windows com MinGW (`gcc --version`) falhou por erro de realocação de DLL do sistema operacional Windows (mesma limitação registrada na Implementação 5).
+- O código foi auditado estaticamente para compilação limpa sob gcc/clang em Linux, Unix e macOS com -Wall -Wextra -Wpedantic -std=c11 -pthread.
+- Empacotamento lgbm.tar realizado via bsdtar nativo do Windows contendo exclusivamente código-fonte, Makefile e documentação sob o prefixo lgbm/.

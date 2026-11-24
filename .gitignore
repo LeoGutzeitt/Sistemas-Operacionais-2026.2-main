@@ -22,6 +22,15 @@ unidade2/implementacao5-base-anterior/customer.txt
 unidade2/implementacao5-base-anterior/commands.txt
 unidade2/implementacao5-base-anterior/result.txt
 
+# Arquivos de dados e compilacao da Implementacao 7 (Gerenciador de Memoria Virtual)
+!implementacao7/lgbm/evidencias.log
+BACKING_STORE.bin
+address.txt
+addresses.txt
+correct.txt
+implementacao7/lgbm/vm
+/vm
+
 # Diretórios temporários
 *.swp
 *.swo
