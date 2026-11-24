@@ -104,7 +104,7 @@ void vm_destroy(VirtualMemoryManager *vm) {
 }
 
 /* Busca na TLB: 1 thread por entrada (16 threads) ou modo sequencial */
-static int tlb_lookup(VirtualMemoryManager *vm, int page_number, int *frame_out) {
+static int tlb_lookup(VirtualMemoryManager *vm, int page_number, int *frame_out, int *tlb_index_out) {
     if (!vm->use_tlb) {
         return 0;
     }
@@ -151,6 +151,9 @@ static int tlb_lookup(VirtualMemoryManager *vm, int page_number, int *frame_out)
     }
 
     if (hit_index != -1) {
+        if (tlb_index_out != NULL) {
+            *tlb_index_out = hit_index;
+        }
         if (vm->tlb_algo == ALGO_LRU) {
             vm->tlb[hit_index].last_access = ++vm->global_clock;
         }
@@ -163,10 +166,10 @@ static int tlb_lookup(VirtualMemoryManager *vm, int page_number, int *frame_out)
     return 0;
 }
 
-/* Insere ou atualiza traducao na TLB aplicando FIFO ou LRU */
-static void tlb_insert(VirtualMemoryManager *vm, int page_number, int frame_number) {
+/* Insere ou atualiza traducao na TLB aplicando FIFO ou LRU e retorna o indice */
+static int tlb_insert(VirtualMemoryManager *vm, int page_number, int frame_number) {
     if (!vm->use_tlb) {
-        return;
+        return -1;
     }
 
     /* Se ja estiver presente, apenas atualiza */
@@ -174,7 +177,7 @@ static void tlb_insert(VirtualMemoryManager *vm, int page_number, int frame_numb
         if (vm->tlb[i].valid && vm->tlb[i].page_number == page_number) {
             vm->tlb[i].frame_number = frame_number;
             vm->tlb[i].last_access = ++vm->global_clock;
-            return;
+            return i;
         }
     }
 
@@ -206,6 +209,7 @@ static void tlb_insert(VirtualMemoryManager *vm, int page_number, int frame_numb
     vm->tlb[target_idx].valid = true;
     vm->tlb[target_idx].load_time = ++vm->global_clock;
     vm->tlb[target_idx].last_access = vm->global_clock;
+    return target_idx;
 }
 
 /* Invalida entrada na TLB quando uma pagina e removida da memoria fisica */
@@ -284,19 +288,20 @@ static int handle_page_fault(VirtualMemoryManager *vm, int page_number) {
     return frame;
 }
 
-/* Traduz endereco logico de 16 bits para endereco fisico e valor */
+/* Traduz endereco logico de 16 bits para endereco fisico, indice da TLB e valor */
 int vm_translate(VirtualMemoryManager *vm, int logical_address,
-                 int *physical_address, signed char *value) {
-    if (vm == NULL || physical_address == NULL || value == NULL) return -1;
+                 int *tlb_index, int *physical_address, signed char *value) {
+    if (vm == NULL || tlb_index == NULL || physical_address == NULL || value == NULL) return -1;
     if (logical_address < 0 || logical_address > 65535) return -1;
 
     int page_number = (logical_address >> 8) & 0xFF;
     int offset = logical_address & 0xFF;
     int frame = -1;
+    int tlb_idx = -1;
 
     vm->total_addresses++;
 
-    if (tlb_lookup(vm, page_number, &frame)) {
+    if (tlb_lookup(vm, page_number, &frame, &tlb_idx)) {
         vm->tlb_hits++;
     } else {
         if (vm->page_table[page_number].valid) {
@@ -310,9 +315,10 @@ int vm_translate(VirtualMemoryManager *vm, int logical_address,
                 return -1;
             }
         }
-        tlb_insert(vm, page_number, frame);
+        tlb_idx = tlb_insert(vm, page_number, frame);
     }
 
+    *tlb_index = tlb_idx;
     *physical_address = (frame << 8) | offset;
     *value = vm->physical_memory[frame][offset];
 
@@ -434,10 +440,11 @@ int vm_process_file(VirtualMemoryManager *vm, const char *address_file_path,
     }
 
     for (size_t i = 0; i < count; i++) {
+        int tlb_index = -1;
         int physical_address = 0;
         signed char byte_val = 0;
 
-        if (vm_translate(vm, addresses[i], &physical_address, &byte_val) != 0) {
+        if (vm_translate(vm, addresses[i], &tlb_index, &physical_address, &byte_val) != 0) {
             fprintf(stderr, "Erro: falha na traducao do endereco %d (indice %zu).\n",
                     addresses[i], i + 1);
             fclose(out_file);
@@ -445,8 +452,13 @@ int vm_process_file(VirtualMemoryManager *vm, const char *address_file_path,
             return -1;
         }
 
-        fprintf(out_file, "Virtual address: %d Physical address: %d Value: %d\n",
-                addresses[i], physical_address, (int)byte_val);
+        if (vm->use_tlb) {
+            fprintf(out_file, "Virtual address: %d TLB: %d Physical address: %d Value: %d\n",
+                    addresses[i], tlb_index, physical_address, (int)byte_val);
+        } else {
+            fprintf(out_file, "Virtual address: %d Physical address: %d Value: %d\n",
+                    addresses[i], physical_address, (int)byte_val);
+        }
     }
 
     double fault_rate = (double)vm->page_faults / (double)vm->total_addresses;

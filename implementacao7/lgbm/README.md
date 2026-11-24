@@ -28,13 +28,13 @@ Este projeto implementa um **Gerenciador de Memória Virtual (Virtual Memory Man
 5. **Arquivo de Saída (`correct.txt`):**
    - Gravado no formato padrão do Silberschatz:
      ```text
-     Virtual address: 16916 Physical address: 20 Value: 0
+     Virtual address: 16916 TLB: 0 Physical address: 20 Value: 0
      ...
      Number of Translated Addresses = 1000
-     Page Faults = ...
-     Page Fault Rate = ...
-     TLB Hits = ...
-     TLB Hit Rate = ...
+     Page Faults = 539
+     Page Fault Rate = 0.539
+     TLB Hits = 54
+     TLB Hit Rate = 0.054
      ```
 
 ---

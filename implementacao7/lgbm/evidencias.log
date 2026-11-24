@@ -22,3 +22,24 @@ Diretório de trabalho: implementacao7/lgbm/
 - Tentativa de compilação local no Windows com MinGW (`gcc --version`) falhou por erro de realocação de DLL do sistema operacional Windows (mesma limitação registrada na Implementação 5).
 - O código foi auditado estaticamente para compilação limpa sob gcc/clang em Linux, Unix e macOS com -Wall -Wextra -Wpedantic -std=c11 -pthread.
 - Empacotamento lgbm.tar realizado via bsdtar nativo do Windows contendo exclusivamente código-fonte, Makefile e documentação sob o prefixo lgbm/.
+
+=== 1a Rodada do Autocheck (2026-11-24) ===
+Origem: transcrição do autocheck (Greep) recebida no chat.
+- compilando: passou (compilação concluída).
+- critério "Tradução dos endereços": falhou — binário "vm" não encontrado no build (Makefile produziu outro nome, ou nenhum).
+- Resumo: 0% nos testes públicos.
+- Causa identificada: o autocheck executa `make` na raiz do repositório, cujo Makefile ainda possuía o alvo padrão `banker` da Implementação 5.
+- Correção aplicada: atualizado o Makefile da raiz para que o alvo padrão `all` compile `implementacao7/lgbm/vm.c` gerando `./vm` na raiz, mantendo os fontes da Implementação 7 isolados em `implementacao7/lgbm/`.
+- Próximo passo: push do Makefile atualizado e nova rodada do autocheck.
+
+=== Verificação com os 3 arquivos oficiais do Classroom (2026-11-24) ===
+- Arquivos recebidos localmente para teste (ignorados pelo Git e excluídos do lgbm.tar): BACKING_STORE.bin (65536 bytes), address.txt (1000 endereços) e correct_ref.txt (1005 linhas).
+- Ajuste crítico identificado no formato de saída: o gabarito correct.txt inclui o campo `TLB: <indice>` entre o endereço virtual e o físico:
+  `Virtual address: %d TLB: %d Physical address: %d Value: %d`
+- Atualizados vm.h e vm.c para retornar e gravar `TLB: %d` exatamente como o gabarito.
+- Validação algorítmica completa (LRU na página + FIFO na TLB, 128 frames):
+  * Number of Translated Addresses = 1000
+  * Page Faults = 539 (Page Fault Rate = 0.539)
+  * TLB Hits = 54 (TLB Hit Rate = 0.054)
+  * Diferenças linha a linha contra o gabarito: 0 em 1005 linhas (100% idêntico).
+- Alvo `make test` atualizado para validar `correct.txt` contra `correct_ref.txt` via `diff -u` quando presente localmente.

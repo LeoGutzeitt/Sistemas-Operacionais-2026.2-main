@@ -96,7 +96,7 @@ int vm_init(VirtualMemoryManager *vm, int num_frames, ReplacementAlgo page_algo,
             const char *backing_path);
 void vm_destroy(VirtualMemoryManager *vm);
 int vm_translate(VirtualMemoryManager *vm, int logical_address,
-                 int *physical_address, signed char *value);
+                 int *tlb_index, int *physical_address, signed char *value);
 int vm_process_file(VirtualMemoryManager *vm, const char *address_file_path,
                     const char *output_file_path);
 

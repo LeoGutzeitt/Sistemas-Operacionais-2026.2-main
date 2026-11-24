@@ -28,6 +28,9 @@ test: $(TARGET)
 	@echo "Executando teste padrao (lru fifo)..."
 	@if [ -f address.txt ] && [ -f BACKING_STORE.bin ]; then \
 		./$(TARGET) address.txt lru fifo; \
+		if [ -f correct_ref.txt ]; then \
+			diff -u correct.txt correct_ref.txt && echo "SUCESSO: correct.txt 100% identico ao gabarito!"; \
+		fi; \
 	elif [ -f addresses.txt ] && [ -f BACKING_STORE.bin ]; then \
 		./$(TARGET) addresses.txt lru fifo; \
 	else \

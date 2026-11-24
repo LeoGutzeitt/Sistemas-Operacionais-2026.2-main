@@ -28,6 +28,7 @@ BACKING_STORE.bin
 address.txt
 addresses.txt
 correct.txt
+correct_ref.txt
 implementacao7/lgbm/vm
 /vm
 
